@@ -1,11 +1,1771 @@
 <!DOCTYPE html>
 <html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+        content="Dobb·E is an open-source framework for teaching robots household tasks via imitation learning in 20 minutes. The framework uses a simple tool called the Stick, collects a dataset called Homes of New York (HoNY) with it, and then trains a representation learning model, Home Pretrained Representations (HPR) with it. Then, Dobb·E uses five minutes of collected data in a new home for a novel task and within fifteen minutes, gives a policy that can solve the task with 81% average success rate.">
+    <meta name="keywords"
+        content="Home robotics, Home robots, Robots in home, Dobb·E, Dobb-E, Open source robot learning">
+    <link rel="author" href="https://mahis.life" />
+    <title>Dobb·E: On Bringing Robots Home</title>
+    <meta property="og:url" content="https://dobb-e.com/">
+    <meta property="og:image" content="https://dobb-e.com/mfiles/images/preview.jpg">
+    <meta property="og:description"
+        content="Dobb·E is an open-source framework for teaching robots new household tasks in 20 minutes via imitation learning.">
+    <meta property="og:title" content="Dobb·E: On Bringing Robots Home">
+    <meta property="og:site_name" content="Dobb·E: On Bringing Robots Home">
+    <meta property="og:see_also" content="https://dobb-e.com/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://dobb-e.com/">
+    <meta name="twitter:title" content="Dobb·E: On Bringing Robots Home">
+    <meta name="twitter:description"
+        content="Dobb·E is an open-source framework for teaching robots new household tasks in 20 minutes via imitation learning.">
+    <meta name="twitter:image" content="https://dobb-e.com/mfiles/images/preview.jpg">
+    <meta name="twitter:image:alt" content="Dobb·E: On Bringing Robots Home">
+    <meta name="twitter:site" content="@notmahi">
+    <meta name="twitter:player" content="https://dobb-e.com/mfiles/washing_machine.mp4">
+    <meta name="twitter:player:width" content="1280">
+    <meta name="twitter:player:height" content="720">
+    <meta name="twitter:player:stream" content="https://dobb-e.com/mfiles/washing_machine.mp4">
+    <meta name="twitter:player:stream:content_type" content="video/mp4">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans',
+                sans-serif;
+        }
+
+        .hero-text {
+            font-size: 5rem;
+        }
+
+        .hero-icon {
+            height: 4rem;
+        }
+
+        .hero-subtitle {
+            font-size: 2rem;
+            font-style: italic;
+        }
+
+        .hero-subtext {
+            font-size: 1.5rem;
+        }
+
+        /* Media query for tablet and smaller, make hero text 23vw */
+        @media screen and (max-width: 767px) {
+            .hero-text {
+                font-size: 15vw;
+            }
+
+            .hero-icon {
+                height: 12vw;
+            }
+
+            .hero-subtitle {
+                font-size: 6vw;
+            }
+
+            .hero-subtext {
+                font-size: 4vw;
+            }
+
+            .has-text-success-dark.is-size-4 {
+                font-size: 4.5vw !important;
+            }
+        }
+
+        .nav-link {
+            font-size: 1.25rem;
+        }
+
+        #nav {
+            position: sticky;
+            top: 0;
+        }
+
+        .caption {
+            font-size: 1rem;
+            /* horizontal position overlaid on the previous class */
+            position: relative;
+            text-align: center;
+            left: 0rem;
+            background-color: rgba(22, 49, 68, 0.5);
+            border-radius: 0.25rem;
+        }
+
+        .authors a {
+            text-decoration: underline;
+        }
+
+        video.is-square-video {
+            aspect-ratio: 1 / 1;
+        }
+
+        video.is-loading {
+            background: rgba(0, 0, 0, 0.5) url(mfiles/images/puff.svg) center center no-repeat;
+        }
+
+        #selected_video {
+            aspect-ratio: 16 / 9;
+            max-height: 540px;
+        }
+
+        @media (orientation:landscape) {
+            .hide-on-landscape {
+                display: none;
+            }
+        }
+
+        @media (orientation:portrait) {
+            .hide-on-portrait {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
 <body>
+    <nav class="navbar" role="navigation" aria-label="main navigation" id="nav">
+        <div class="navbar-brand">
+            <a class="navbar-item is-success nav-link is-size-3" href="#">
+                <span class="icon"><img src="mfiles/logo.svg"></img></span><span>DOBB·E</span>
+            </a>
 
-<h1>OK-Robot: The Devil is in the Details when Applying Large Open-Knowledge Models to Robotics</h1>
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div id="navMenu" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item link is-info nav-link" href="#videos">
+                    <div class="icon-text">
+                        <span>Videos</span>
+                    </div>
+                </a>
+                <a class="navbar-item link is-info nav-link" href="#hardware">
+                    <div class="icon-text">
+                        <span>Hardware</span>
+                    </div>
+                </a>
+                <a class="navbar-item link is-info nav-link" href="#dataset">
+                    <div class="icon-text">
+                        <span>Dataset</span>
+                    </div>
+                </a>
+                <a class="navbar-item link is-info nav-link" href="#models">
+                    <div class="icon-text">
+                        <span>Models</span>
+                    </div>
+                </a>
+                <a class="navbar-item link is-info nav-link" href="#paper">
+                    <div class="icon-text">
+                        <span>Paper</span>
+                    </div>
+                </a>
+                <a class="navbar-item link is-info nav-link" href="#code">
+                    <div class="icon-text">
+                        <span>Code</span>
+                    </div>
+                </a>
+            </div>
+            <div class="navbar-end">
+                <a class="navbar-item link is-info nav-link" href="https://docs.dobb-e.com/contact-us" target="_blank">
+                    <span>Contact us</span>
+                </a>
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-info" href="https://docs.dobb-e.com" target="_blank">
+                            <span class="icon-text">
+                                <span class="icon">
+                                    <ion-icon name="book-outline"></ion-icon>
+                                </span>
+                                <span>Start using Dobb·E</span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="hero is-fullheight-with-navbar">
+        <div class="hero-body block">
+            <div class="container">
+                <div class="container block">
+                    <div class="title block">
+                        <h1 class="hero-text">
+                            <!-- <span><img src="mfiles/logo.svg" class="hero-icon"></img></span> -->
+                            <!-- <span> -->
+                            Dobb·E
+                            <!-- </span> -->
+                        </h1>
+                    </div>
+                    <div class="subtitle block">
+                        <h2 class="hero-subtitle">
+                            An open-source, general framework for learning household robotic manipulation
+                        </h2>
+                    </div>
+                    <div class="subtitle block is-size-5-mobile is-size-4-tablet is-size-3 hero-subtext">
+                        <p class="">
+                            <span class="has-text-success-dark">109</span> tasks
+                        </p>
+                        <p class="">
+                            <span class="has-text-success-dark">10</span> NYC homes
+                        </p>
+                        <p>
+                            <span class="has-text-success-dark">81%</span> success rate
+                        </p>
+                        <p>
+                            <span class="has-text-success-dark">20</span> minutes to learn a new task
+                        </p>
+                    </div>
+                    <div class="subtitle  is-size-7-mobile is-size-6-tablet block">
+                        <p class="authors">
+                            <a href="https://mahis.life" target="_blank">Nur Muhammad "Mahi" Shafiullah*</a>,
+                            <a href="https://raianant.github.io/" target="_blank">Anant Rai*</a>,
+                            <a href="https://haritheja.com" target="_blank">Haritheja Etukuru</a>,
+                            <a href="https://www.linkedin.com/in/eva-liu-ba90a5209/" target="_blank">Yiqian Liu</a>,
+                            <a href="https://imisra.github.io/" target="_blank">Ishan Misra</a>,
+                            <a href="https://soumith.ch/" target="_blank">Soumith Chintala</a>,
+                            <a href="https://lerrelpinto.com/" target="_blank">Lerrel Pinto</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="container block">
+                    <a class="button is-info is-outlined is-responsive" href="#videos">
+                        <span class="icon">
+                            <ion-icon name="videocam-outline"></ion-icon>
+                        </span>
+                        <span>Dobb·E in homes</span>
+                    </a>
+                    <a class="button is-outlined is-responsive" href="#paper">
+                        <span class="icon">
+                            <ion-icon name="newspaper-outline"></ion-icon>
+                        </span>
+                        <span>Read the paper</span>
+                    </a>
+                    <a class="button is-outlined is-responsive" target="_blank"
+                        href="https://github.com/notmahi/dobb-e">
+                        <span class="icon">
+                            <ion-icon name="logo-github"></ion-icon>
+                        </span>
+                        <span>GitHub repo</span>
+                    </a>
+                </div>
+                <div class="columns block">
+                    <div class="column">
+                        <figure>
+                            <video muted autoplay playsinline loop src="mfiles/washing_machine.mp4"></video>
+                        </figure>
+                    </div>
+                    <div class="column">
+                        <figure>
+                            <video muted autoplay playsinline loop
+                                src="mfiles/long_horizon_kitchen_30s_comp.mp4"></video>
+                        </figure>
+                    </div>
+                </div>
+                <div class="container block columns">
+                    <div class="column">
+                        <div class="subtitle block is-size-4">
+                            <button class="button is-outlined is-responsive" id="expand-abstract">
+                                <span class="icon"><ion-icon name="caret-down-outline"
+                                        id="expand-abstract-icon"></ion-icon></span><span
+                                    id="expand-abstract-text">Expand
+                                    abstract</span></button>
+                        </div>
+                        <div class="is-size-6 block" id="abstract" hidden>
+                            <p>
+                                Throughout history, we have successfully integrated various machines into our homes.
+                                Dishwashers, laundry machines, stand mixers, and robot vacuums are just a few recent
+                                examples.
+                                However, these machines excel at performing only a single task effectively. The concept
+                                of a
+                                “generalist machine” in homes - a domestic assistant that can adapt and learn from our
+                                needs,
+                                all while remaining cost-effective - has long been a goal in robotics that has been
+                                steadily
+                                pursued for decades. In this work, we initiate a large-scale effort towards this goal by
+                                introducing Dobb·E, an affordable yet versatile general-purpose system for learning
+                                robotic
+                                manipulation within household settings. Dobb·E can learn a new task with only five
+                                minutes
+                                of a
+                                user showing it how to do it, thanks to a demonstration collection tool ("The Stick") we
+                                built
+                                out of cheap parts and iPhones. We use the Stick to collect 13 hours of data in 22 homes
+                                of
+                                New
+                                York City, and train Home Pretrained Representations (HPR). Then, in a novel home
+                                environment,
+                                with five minutes of demonstrations and fifteen minutes of adapting the HPR model, we
+                                show
+                                that
+                                Dobb·E can reliably solve the task on the Stretch, a mobile robot readily available on
+                                the
+                                market. Across roughly 30 days of experimentation in homes of New York City and
+                                surrounding
+                                areas, we test our system in 10 homes, with a total of 109 tasks in different
+                                environments,
+                                and
+                                finally achieve a success rate of 81%. Beyond success percentages, our experiments
+                                reveal a
+                                plethora of unique challenges absent or ignored in lab robotics. These range from
+                                effects of
+                                strong shadows to variable demonstration quality by non-expert users. With the hope of
+                                accelerating research on home robots, and eventually seeing robot butlers in every home,
+                                we
+                                open-source Dobb·E software stack and models, our data, and our hardware designs.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="container block columns">
+                    <div class="column">
+                        <div class="subtitle is-size-4">
+                            <span>Dobb·E, in a nutshell:</span>
+                        </div>
+                        <div id="nutshell">
+                            <figure class="hide-on-portrait">
+                                <video style="width:100%" playsinline muted autoplay loop
+                                    src="mfiles/whats_happening_comp.mp4"></video>
+                            </figure>
+                            <figure class="hide-on-landscape">
+                                <video style="width:100%" playsinline muted autoplay loop
+                                    src="mfiles/whats_happening_vert_comp.mp4"></video>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Video section -->
+    <section class="hero is-fullheight-with-navbar" id="videos">
+        <div class="hero-body block">
+            <div class="container block">
+                <div class="container block">
+                    <div class="title block">
+                        <h1 class="hero-text">
+                            Videos
+                        </h1>
+                    </div>
+                    <div class="subtitle block">
+                        <h2 class="hero-subtitle">
+                            Dobb·E in action
+                        </h2>
+                    </div>
+                    <div class="subtitle block">
+                        <p class="hero-subtext">
+                            In 10 homes of New York City, Dobb·E attempted 109 tasks. Here are sample rollouts from each
+                            of the tasks.
+                        </p>
+                    </div>
+                </div>
+                <div class="container block">
+                    <!-- Dropdown for the video selection -->
+                    <div class="columns">
+                        <div class="column is-5">
+                            <div class="select" style="display: block;">
+                                <select id="video-home-selection" style="width: 100%;">
+                                    <option value="Home 1">Home 1</option>
+                                    <option value="Home 2">Home 2</option>
+                                    <option value="Home 3">Home 3</option>
+                                    <option value="Home 4">Home 4</option>
+                                    <option value="Home 5">Home 5</option>
+                                    <option value="Home 6">Home 6</option>
+                                    <option value="Home 7">Home 7</option>
+                                    <option value="Home 8">Home 8</option>
+                                    <option value="Home 9">Home 9</option>
+                                    <option value="Home 10">Home 10</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="column is-5">
+                            <div class="select" style="display: block;">
+                                <select id="video-task-selection" style="width: 100%;">
+                                    <option value="opening_horizontal_blinds.mp4">Opening horizontal blinds</option>
+                                    <option value="opening_kitchen_cabinet_drawer.mp4">Opening kitchen cabinet drawer
+                                    </option>
+                                    <option value="pouring_marshmallows.mp4">Pouring marshmallows</option>
+                                    <option value="picking_up_and_placing_spice_bottle.mp4">Picking up and placing spice
+                                        bottle</option>
+                                    <option value="turning_knob.mp4">Turning knob</option>
+                                    <option value="closing_kitchen_cabinet_door.mp4">Closing kitchen cabinet door
+                                    </option>
+                                    <option value="opening_air_fryer.mp4">Opening air fryer</option>
+                                    <option value="pick_and_place_plate.mp4">Pick and place plate</option>
+                                    <option value="closing_air_fryer.mp4">Closing air fryer</option>
+                                    <option value="closing_kitchen_cabinet_drawer.mp4">Closing kitchen cabinet drawer
+                                    </option>
+                                    <option value="pickup_flower_from_vase.mp4">Pickup flower from vase</option>
+                                    <option value="opening_vertical_blinds.mp4">Opening vertical blinds</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="column is-2">
+                            <button class="button is-info is-outlined" id="shuffle-button" style="width: 100%;">
+                                <span class="icon">
+                                    <ion-icon name="shuffle-outline"></ion-icon>
+                                </span>
+                                <span>Shuffle</span>
+                        </div>
+                    </div>
 
-<p>Remarkable progress has been made in recent years in the fields of vision, language, and robotics. We now have vision models capable of recognizing objects based on language queries, navigation systems that can effectively control mobile systems, and grasping models that can handle a wide range of objects. Despite these advancements, general-purpose applications of robotics still lags behind, even though its capabilities rely on recognition, navigation, and grasping. In this paper, we adopt a systems-first approach to develop a new Open Knowledge based robotics framework called OK-Robot. By combining Vision-Language Models (VLMs) for object detection, navigation primitives for movement, and grasping primitives for object manipulation, OK-Robot offers a integrated solution for pick-and-drop operations without requiring any training. To evaluate its performance, we run OK-Robot in 10 real-world home environments. The results demonstrate that OK-Robot achieves a 60% success rate in open ended pick-and-drop tasks, representing a new state-of-the-art in Open Vocabulary Mobile Manipulation (OVMM) with nearly 1.8× the performance of prior work. However, the most important insight gained from OK-Robot is the critical role of nuanced details when combining Open Knowledge systems like VLMs with robotic modules. To facilitate further research and development, OK-Robot is open-sourced, and its capabilities can be visualized on our project website.</p>
+                </div>
+                <div class="block">
+                    <div class="columns is-centered">
+                        <div class="column is-12-mobile is-8-tablet video-holder">
+                            <figure class="">
+                                <video style="width:100%" playsinline muted autoplay loop
+                                    src="mfiles/compressed_video/home_1/opening_horizontal_blinds.mp4"
+                                    id="selected_video"></video>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Hardware section -->
+    <section class="hero is-fullheight-with-navbar" id="hardware">
+        <div class="hero-body block">
+            <div class="container block">
+                <div class="container block">
+                    <div class="title block">
+                        <h1 class="hero-text">
+                            Hardware
+                        </h1>
+                    </div>
+                    <div class="subtitle block">
+                        <h2 class="hero-subtitle">
+                            The Stick
+                        </h2>
+                    </div>
+                </div>
+                <div class="block">
+                    <div class="columns is-centered">
+                        <div class="column is-12-mobile is-8-tablet">
+                            <figure class="">
+                                <video style="width:100%" muted playsinline autoplay loop
+                                    src="mfiles/stick_loop_compressed.mp4"></video>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+                <div class="container block">
+                    <div class="subtitle block">
+                        <p class="block">
+                            We believe one of the largest roadblocks to safe and scalable progress in home robotics,
+                            especially in imitation learning based approaches, is the lack of a cheap, ergonomic,
+                            and easy way to collect demonstrations for robots.
+                        </p>
+                        <p class="block">
+                            To address this, we built the <strong>Stick</strong>, a demonstration collection tool we
+                            built out of a $25 Reacher-grabber stick, some 3D printed parts, and an iPhone.
+                        </p>
+                    </div>
+                    <div class="columns block is-multiline">
+                        <div class="column">
+                            <a class="button is-outlined is-medium is-fullwidth" target="_blank"
+                                href="https://amazon.com/Vive-Foldable-Suction-Reacher-Grabber/dp/B08BPGJVRB/">
+                                <span class="icon">
+                                    <ion-icon name="cart-outline"></ion-icon>
+                                </span>
+                                <span>Get the reacher-grabber</span>
+                            </a>
+                        </div>
+                        <div class="column">
+                            <a class="button is-outlined is-medium is-fullwidth" target="_blank"
+                                href="https://github.com/notmahi/dobb-e/tree/main/hardware">
+                                <span class="icon">
+                                    <ion-icon name="construct-outline"></ion-icon>
+                                </span>
+                                <span>Download the 3D files</span>
+                            </a>
+                        </div>
+                        <div class="column">
+                            <a class="button is-outlined is-medium is-fullwidth" target="_blank"
+                                href="https://docs.dobb-e.com/hardware/putting-together-the-stick">
+                                <span class="icon">
+                                    <ion-icon name="book-outline"></ion-icon>
+                                </span>
+                                <span>Build and usage guide</span>
+                            </a>
+                        </div>
+                        <div class="column">
+                            <a class="button is-outlined is-medium is-fullwidth" target="_blank"
+                                href="https://github.com/notmahi/dobb-e/tree/main/stick-data-collection">
+                                <span class="icon">
+                                    <ion-icon name="code-outline"></ion-icon>
+                                </span>
+                                <span>Dataset creation code</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Dataset section -->
+    <section class="hero is-fullheight-with-navbar" id="dataset">
+        <div class="hero-body block">
+            <div class="container">
+                <div class="container block">
+                    <div class="title block">
+                        <h1 class="hero-text">
+                            Dataset
+                        </h1>
+                    </div>
+                    <div class="subtitle block">
+                        <h2 class="hero-subtitle">
+                            Homes of New York (HoNY)
+                        </h2>
+                    </div>
+                    <div class="block columns is-multiline is-mobile is-centered" id="dataset-demo">
+                        <!-- Placeholder section for videos -->
+                    </div>
+                    <div class="block">
+                        <div class="level is-size-4">
+                            <div class="level-item">
+                                22 homes
+                            </div>
+                            <div class="level-item">
+                                216 environments
+                            </div>
+                            <div class="level-item">
+                                5620 trajectories
+                            </div>
+                            <div class="level-item">
+                                13 hours
+                            </div>
+                            <div class="level-item">
+                                1.5 million frames
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block">
+                        <div class="subtitle">
+                            <p class="block hero-subtext">
+                                Homes of New York (HoNY) is a dataset containing 13 hours of interactions at 22
+                                different homes of New York City collected with the <a href="#hardware">Stick</a>. The
+                                dataset contains RGB and depth videos at 30 fps, as well as full action annotations for
+                                6D pose of the gripper as well as the gripper's opening angle normalized between (0, 1).
+                            </p>
+                            <div class="block field columns">
+                                <div class="column">
+                                    <a class="block button is-info is-outlined is-medium is-fullwidth" target="_blank"
+                                        href="https://dl.dobb-e.com/datasets/homes_of_new_york.zip">
+                                        <span class="icon">
+                                            <ion-icon name="caret-forward-circle-outline"></ion-icon>
+                                        </span>
+                                        <span>RGB + actions dataset (814 MB)</span>
+                                    </a>
+
+                                </div>
+
+                                <div class=" column">
+                                    <a class="block button is-info is-outlined is-medium is-fullwidth" target="_blank"
+                                        href="https://drive.google.com/drive/folders/1o8c6b6hSKfId8EzemVGf8c7DQoZ2IHAO?usp=sharing">
+                                        <span class="icon">
+                                            <ion-icon name="caret-forward-circle-outline"></ion-icon>
+                                        </span>
+                                        <span>RGB-D + actions dataset (77 GB)</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <!-- Pretrained models -->
+    <section class="hero is-fullheight-with-navbar" id="models">
+        <div class="hero-body block">
+            <div class="container">
+                <div class="container block">
+                    <div class="title block">
+                        <h1 class="hero-text">
+                            Model
+                        </h1>
+                    </div>
+                    <div class="subtitle block">
+                        <h2 class="hero-subtitle">
+                            Home Pretrained Representations (HPR)
+                        </h2>
+                    </div>
+                    <div class="block">
+                        <div class="subtitle">
+                            <figure class="block">
+                                <img src="mfiles/images/robot_method.svg" alt="HPR" />
+                            </figure>
+                            <p class="block hero-subtext">
+                                Home Pretrained Representation (HPR) is a model pre-trained on the <a
+                                    href="#dataset">HoNY dataset</a> that we used to initialize a
+                                robot policy to perform a new task in a novel enviroment. HPR is a
+                                ResNet-34 model trained on the <a href="#dataset">HoNY dataset</a>
+                                using the <a href="https://github.com/facebookresearch/moco-v3">MoCo-v3</a>
+                                self-supervised learning objective.
+                            </p>
+                            <p class="block hero-subtext">
+                                During deployment,we used HPR to initialize a policy, the trunk of which was
+                                simply our pretrained ResNet-34 model followed by two linear layers on top.
+                            </p>
+                            <a class="block button is-info is-outlined is-fullwidth is-medium-tablet" target="_blank"
+                                href="https://huggingface.co/notmahi/dobb-e">
+                                <span class="icon">
+                                    🤗
+                                </span>
+                                <span>Get the model at Huggingface</span>
+                            </a>
+                            <p class="block hero-subtext">
+                                Or if you are using <span class="">🤗</span> <a href="https://huggingface.co/timm"
+                                    target="_blank">Pytorch Image Models (TIMM)</a>, you can simply
+                                start using it in a couple of lines:
+                            </p>
+                            <div class="demo-highlight" style="max-width: 90vw; overflow-x: auto;">
+                                <pre class="is-hidden-tablet"><span></span><span class="kn">import</span> <span class="nn">timm</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">timm</span><span class="o">.</span><span class="n">create_model</span><span class="p">(
+    </span><span class="s2">"hf-hub:notmahi/dobb-e"</span><span class="p">,
+    </span><span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">
+)</span></pre>
+
+                                <pre
+                                    class="is-hidden-mobile"><span></span><span class="kn">import</span> <span class="nn">timm</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">timm</span><span class="o">.</span><span class="n">create_model</span><span class="p">(</span><span class="s2">"hf-hub:notmahi/dobb-e"</span><span class="p">, </span><span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></pre>
+                            </div>
+                            <style id="css-style">
+                                td.linenos .normal {
+                                    color: inherit;
+                                    background-color: transparent;
+                                    padding-left: 5px;
+                                    padding-right: 5px;
+                                }
+
+                                span.linenos {
+                                    color: inherit;
+                                    background-color: transparent;
+                                    padding-left: 5px;
+                                    padding-right: 5px;
+                                }
+
+                                td.linenos .special {
+                                    color: #000000;
+                                    background-color: #ffffc0;
+                                    padding-left: 5px;
+                                    padding-right: 5px;
+                                }
+
+                                span.linenos.special {
+                                    color: #000000;
+                                    background-color: #ffffc0;
+                                    padding-left: 5px;
+                                    padding-right: 5px;
+                                }
+
+                                .demo-highlight .hll {
+                                    background-color: #ffffcc
+                                }
+
+                                .demo-highlight {
+                                    background: #ffffff;
+                                }
+
+                                .demo-highlight .k {
+                                    color: #A90D91
+                                }
+
+                                /* Keyword */
+                                .demo-highlight .l {
+                                    color: #1C01CE
+                                }
+
+                                /* Literal */
+                                .demo-highlight .n {
+                                    color: #000000
+                                }
+
+                                /* Name */
+                                .demo-highlight .o {
+                                    color: #000000
+                                }
+
+                                .demo-highlight .kc {
+                                    color: #A90D91
+                                }
+
+                                /* Keyword.Declaration */
+                                .demo-highlight .kn {
+                                    color: #A90D91
+                                }
+
+                                /* Literal.String.Doc */
+                                .demo-highlight .s2 {
+                                    color: #C41A16
+                                }
+                            </style>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Paper -->
+    <section class="hero is-halfheight" id="paper">
+        <div class="hero-body block">
+            <div class="container">
+                <div class="container block">
+                    <div class="title block">
+                        <h1 class="hero-text">
+                            Paper
+                        </h1>
+                    </div>
+                    <div class="subtitle block">
+                        <h2 class="hero-subtitle">
+                            On Bringing Robots Home
+                        </h2>
+                    </div>
+                    <div class="columns">
+                        <div class="column is-12-mobile">
+                            <a href="https://arxiv.org/abs/2311.16098" target="_blank">
+                                <figure class="image">
+                                    <img src="mfiles/images/paper_preview.jpg" style="max-width: 95vw;" alt="Paper">
+                                </figure>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="columns">
+                        <div class="column">
+                            <a class="button is-outlined is-medium is-fullwidth" target="_blank"
+                                href="https://arxiv.org/abs/2311.16098">
+                                <span class="icon">
+                                    <img src="mfiles/images/arxiv.svg" style="height: 1.5rem;"></img>
+                                </span>
+                                <span>Read the paper (Arxiv)</span>
+                            </a>
+                        </div>
+                        <div class="column">
+                            <a class="button is-outlined is-medium is-fullwidth" target="_blank"
+                                href="mfiles/paper/On_Bringing_Robots_Home.pdf">
+                                <span class="icon">
+                                    <ion-icon name="document-text-outline"></ion-icon>
+                                </span>
+                                <span>Read the paper (PDF)</span>
+                            </a>
+                        </div>
+                        <div class="column">
+                            <a class="button is-outlined is-medium is-fullwidth" target="_blank" href="more/bibtex.txt">
+                                <span class="icon">
+                                    <ion-icon name="bookmark-outline"></ion-icon>
+                                </span>
+                                <span>Citation (bibtex)</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <pre id="citation-text" style="max-width: 90vw; overflow-x: auto;">
+@misc{shafiullah2023dobbe,
+    title={On Bringing Robots Home}, 
+    author={Nur Muhammad Mahi Shafiullah and Anant Rai and Haritheja Etukuru and Yiqian Liu and Ishan Misra and Soumith Chintala and Lerrel Pinto},
+    year={2023},
+    eprint={2311.16098},
+    archivePrefix={arXiv},
+    primaryClass={cs.RO}
+}</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Code -->
+    <section class="hero is-halfheight" id="code">
+        <div class="hero-body block">
+            <div class="container">
+                <div class="container block">
+                    <div class="title block">
+                        <h1 class="hero-text">
+                            Code
+                        </h1>
+                    </div>
+                    <div class="subtitle block">
+                        <h2 class="hero-subtitle">
+                            Get the code on github.
+                        </h2>
+                    </div>
+                    <div class="container block">
+                        <div class="columns">
+                            <div class="column">
+                                <a class="button is-outlined is-medium is-fullwidth" target="_blank"
+                                    href="https://github.com/notmahi/dobb-e">
+                                    <span class="icon">
+                                        <ion-icon name="logo-github"></ion-icon>
+                                    </span>
+                                    <span>GitHub repo</span>
+                                </a>
+                            </div>
+                            <div class="column">
+                                <a class="button is-outlined is-medium is-fullwidth" target="_blank"
+                                    href="https://docs.dobb-e.com">
+                                    <span class="icon">
+                                        <ion-icon name="book-outline"></ion-icon>
+                                    </span>
+                                    <span>Documentation</span>
+                                </a>
+                            </div>
+                            <div class="column">
+                                <a class="button is-outlined is-medium is-fullwidth" target="_blank"
+                                    href="https://github.com/notmahi/dobb-e">
+                                    <span class="icon">
+                                        <ion-icon name="mail-outline"></ion-icon>
+                                    </span>
+                                    <span>Questions? Contact us.</span>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+                <strong>Dobb·E</strong> by <a href="https://mahis.life">Mahi Shafiullah</a>.
+                The source code is licensed <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The
+                website content is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
+            </p>
+        </div>
+    </footer>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
-</html>
 
+<script>
+    const videoData = { 0: ["Door closing", "1", "1"], 1: ["Door closing", "2", "1"], 2: ["Door closing", "2", "2"], 3: ["Door closing", "3", "1"], 4: ["Door closing", "5", "1"], 5: ["Door closing", "5", "2"], 6: ["Door closing", "5", "3"], 7: ["Door closing", "7", "1"], 8: ["Door closing", "8", "1"], 9: ["Door closing", "8", "2"], 10: ["Door closing", "9", "1"], 11: ["Door closing", "9", "2"], 12: ["Door closing", "10", "1"], 13: ["Door closing", "11", "1"], 14: ["Door closing", "14", "1"], 15: ["Door closing", "14", "2"], 16: ["Door closing", "14", "3"], 17: ["Door closing", "15", "1"], 18: ["Door closing", "15", "2"], 19: ["Door closing", "15", "3"], 20: ["Door closing", "15", "4"], 21: ["Door closing", "15", "5"], 22: ["Door closing", "15", "6"], 23: ["Door closing", "15", "7"], 24: ["Door closing", "15", "8"], 25: ["Door closing", "16", "1"], 26: ["Door closing", "16", "2"], 27: ["Door closing", "16", "3"], 28: ["Door closing", "17", "1"], 29: ["Door closing", "18", "1"], 30: ["Door closing", "19", "1"], 31: ["Door closing", "19", "2"], 32: ["Door closing", "20", "2"], 33: ["Door closing", "20", "3"], 34: ["Door closing", "20", "4"], 35: ["Door closing", "20", "5"], 36: ["Door closing", "21", "1"], 37: ["Door closing", "21", "2"], 38: ["Door closing", "21", "3"], 39: ["Door closing", "22", "1"], 40: ["Door opening", "1", "1"], 41: ["Door opening", "2", "1"], 42: ["Door opening", "2", "2"], 43: ["Door opening", "3", "1"], 44: ["Door opening", "4", "1"], 45: ["Door opening", "4", "2"], 46: ["Door opening", "6", "1"], 47: ["Door opening", "6", "2"], 48: ["Door opening", "6", "3"], 49: ["Door opening", "6", "4"], 50: ["Door opening", "8", "1"], 51: ["Door opening", "8", "2"], 52: ["Door opening", "8", "3"], 53: ["Door opening", "9", "1"], 54: ["Door opening", "9", "2"], 55: ["Door opening", "10", "1"], 56: ["Door opening", "11", "1"], 57: ["Door opening", "12", "1"], 58: ["Door opening", "12", "2"], 59: ["Door opening", "12", "3"], 60: ["Door opening", "13", "1"], 61: ["Door opening", "13", "2"], 62: ["Door opening", "13", "4"], 63: ["Door opening", "13", "5"], 64: ["Door opening", "14", "1"], 65: ["Door opening", "14", "2"], 66: ["Door opening", "14", "3"], 67: ["Door opening", "15", "1"], 68: ["Door opening", "15", "2"], 69: ["Door opening", "15", "3"], 70: ["Door opening", "15", "4"], 71: ["Door opening", "16", "1"], 72: ["Door opening", "16", "2"], 73: ["Door opening", "16", "3"], 74: ["Door opening", "17", "1"], 75: ["Door opening", "18", "1"], 76: ["Door opening", "20", "2"], 77: ["Door opening", "20", "3"], 78: ["Door opening", "20", "4"], 79: ["Door opening", "21", "1"], 80: ["Door opening", "21", "2"], 81: ["Door opening", "21", "3"], 82: ["Door opening", "21", "4"], 83: ["Door opening", "21", "5"], 84: ["Door opening", "22", "1"], 85: ["Door opening", "22", "2"], 86: ["Door opening", "22", "3"], 87: ["Door opening", "22", "4"], 88: ["Drawer closing", "2", "1"], 89: ["Drawer closing", "3", "1"], 90: ["Drawer closing", "3", "2"], 91: ["Drawer closing", "4", "1"], 92: ["Drawer closing", "5", "1"], 93: ["Drawer closing", "5", "2"], 94: ["Drawer closing", "7", "1"], 95: ["Drawer closing", "8", "1"], 96: ["Drawer closing", "8", "2"], 97: ["Drawer closing", "9", "1"], 98: ["Drawer closing", "9", "2"], 99: ["Drawer closing", "9", "3"], 100: ["Drawer closing", "10", "1"], 101: ["Drawer closing", "10", "2"], 102: ["Drawer closing", "11", "1"], 103: ["Drawer closing", "14", "1"], 104: ["Drawer closing", "14", "2"], 105: ["Drawer closing", "14", "3"], 106: ["Drawer closing", "15", "1"], 107: ["Drawer closing", "15", "2"], 108: ["Drawer closing", "16", "1"], 109: ["Drawer closing", "19", "1"], 110: ["Drawer closing", "19", "2"], 111: ["Drawer closing", "19", "3"], 112: ["Drawer closing", "20", "1"], 113: ["Drawer closing", "20", "2"], 114: ["Drawer closing", "21", "1"], 115: ["Drawer closing", "21", "2"], 116: ["Drawer closing", "21", "3"], 117: ["Drawer closing", "22", "1"], 118: ["Drawer opening", "2", "1"], 119: ["Drawer opening", "3", "1"], 120: ["Drawer opening", "3", "2"], 121: ["Drawer opening", "4", "1"], 122: ["Drawer opening", "4", "2"], 123: ["Drawer opening", "4", "3"], 124: ["Drawer opening", "5", "1"], 125: ["Drawer opening", "5", "2"], 126: ["Drawer opening", "7", "1"], 127: ["Drawer opening", "8", "1"], 128: ["Drawer opening", "9", "1"], 129: ["Drawer opening", "9", "2"], 130: ["Drawer opening", "10", "1"], 131: ["Drawer opening", "10", "3"], 132: ["Drawer opening", "11", "1"], 133: ["Drawer opening", "13", "1"], 134: ["Drawer opening", "14", "1"], 135: ["Drawer opening", "14", "2"], 136: ["Drawer opening", "15", "1"], 137: ["Drawer opening", "15", "2"], 138: ["Drawer opening", "16", "1"], 139: ["Drawer opening", "17", "1"], 140: ["Drawer opening", "18", "1"], 141: ["Drawer opening", "19", "1"], 142: ["Drawer opening", "20", "1"], 143: ["Drawer opening", "20", "2"], 144: ["Drawer opening", "21", "1"], 145: ["Drawer opening", "22", "1"], 146: ["Handle grasping", "3", "1"], 147: ["Handle grasping", "5", "1"], 148: ["Handle grasping", "6", "1"], 149: ["Handle grasping", "6", "2"], 150: ["Handle grasping", "6", "3"], 151: ["Handle grasping", "6", "4"], 152: ["Handle grasping", "6", "5"], 153: ["Handle grasping", "7", "1"], 154: ["Handle grasping", "15", "1"], 155: ["Handle grasping", "16", "1"], 156: ["Handle grasping", "16", "2"], 157: ["Handle grasping", "19", "1"], 158: ["Handle grasping", "20", "1"], 159: ["Handle grasping", "21", "1"], 160: ["Handle grasping", "22", "1"], 161: ["Handle grasping", "22", "2"], 162: ["Pick and place", "2", "1"], 163: ["Pick and place", "3", "1"], 164: ["Pick and place", "5", "1"], 165: ["Pick and place", "7", "1"], 166: ["Pick and place", "7", "2"], 167: ["Pick and place", "8", "1"], 168: ["Pick and place", "10", "1"], 169: ["Pick and place", "11", "1"], 170: ["Pick and place", "11", "2"], 171: ["Pick and place", "12", "1"], 172: ["Pick and place", "14", "1"], 173: ["Pick and place", "14", "2"], 174: ["Pick and place", "14", "3"], 175: ["Pick and place", "15", "1"], 176: ["Pick and place", "16", "1"], 177: ["Pick and place", "16", "2"], 178: ["Pick and place", "16", "3"], 179: ["Pick and place", "20", "1"], 180: ["Pick and place", "20", "2"], 181: ["Pick and place", "21", "1"], 182: ["Pick and place", "21", "2"], 183: ["Pick and place", "21", "3"], 184: ["Play data", "1", "1"], 185: ["Play data", "3", "1"], 186: ["Play data", "5", "1"], 187: ["Play data", "11", "1"], 188: ["Play data", "14", "1"], 189: ["Play data", "14", "2"], 190: ["Play data", "14", "3"], 191: ["Play data", "14", "4"], 192: ["Play data", "15", "1"], 193: ["Play data", "16", "1"], 194: ["Play data", "19", "1"], 195: ["Play data", "20", "1"], 196: ["Play data", "21", "1"], 197: ["Play data", "22", "4"], 198: ["Play data", "22", "5"], 199: ["Switch button", "2", "1"], 200: ["Switch button", "3", "1"], 201: ["Switch button", "5", "1"], 202: ["Switch button", "11", "1"], 203: ["Switch button", "11", "2"], 204: ["Switch button", "14", "1"], 205: ["Switch button", "14", "2"], 206: ["Switch button", "15", "1"], 207: ["Switch button", "15", "2"], 208: ["Switch button", "15", "3"], 209: ["Switch button", "15", "4"], 210: ["Switch button", "16", "1"], 211: ["Switch button", "21", "1"], 212: ["Switch button", "21", "2"], 213: ["Switch button", "21", "3"], 214: ["Switch button", "21", "4"], 215: ["Switch button", "22", "1"] };
+    const taskRollouts = {
+        'Home 4': [{
+            'proper_home_name': 'Home 4',
+            'home_name': 'home_4',
+            'filename': 'pulling_chair.mp4',
+            'proper_task_name': 'Pulling chair'
+        },
+        {
+            'proper_home_name': 'Home 4',
+            'home_name': 'home_4',
+            'filename': 'pouring_chocolate_almonds.mp4',
+            'proper_task_name': 'Pouring chocolate almonds'
+        },
+        {
+            'proper_home_name': 'Home 4',
+            'home_name': 'home_4',
+            'filename': 'opening_closet_door.mp4',
+            'proper_task_name': 'Opening closet door'
+        },
+        {
+            'proper_home_name': 'Home 4',
+            'home_name': 'home_4',
+            'filename': 'opening_dishwasher_door.mp4',
+            'proper_task_name': 'Opening dishwasher door'
+        },
+        {
+            'proper_home_name': 'Home 4',
+            'home_name': 'home_4',
+            'filename': 'opening_freezer_door.mp4',
+            'proper_task_name': 'Opening freezer door'
+        },
+        {
+            'proper_home_name': 'Home 4',
+            'home_name': 'home_4',
+            'filename': 'pick_up_paper_bag.mp4',
+            'proper_task_name': 'Pick up paper bag'
+        },
+        {
+            'proper_home_name': 'Home 4',
+            'home_name': 'home_4',
+            'filename': 'pick_up_tissue_paper.mp4',
+            'proper_task_name': 'Pick up tissue paper'
+        },
+        {
+            'proper_home_name': 'Home 4',
+            'home_name': 'home_4',
+            'filename': 'closing_kitchen_cabinet_door.mp4',
+            'proper_task_name': 'Closing kitchen cabinet door'
+        },
+        {
+            'proper_home_name': 'Home 4',
+            'home_name': 'home_4',
+            'filename': 'pulling_book_from_shelf.mp4',
+            'proper_task_name': 'Pulling book from shelf'
+        },
+        {
+            'proper_home_name': 'Home 4',
+            'home_name': 'home_4',
+            'filename': 'closing_kitchen_cabinet_drawer.mp4',
+            'proper_task_name': 'Closing kitchen cabinet drawer'
+        },
+        {
+            'proper_home_name': 'Home 4',
+            'home_name': 'home_4',
+            'filename': 'pouring_oil.mp4',
+            'proper_task_name': 'Pouring oil'
+        },
+        {
+            'proper_home_name': 'Home 4',
+            'home_name': 'home_4',
+            'filename': 'pick_and_place_shark_toy.mp4',
+            'proper_task_name': 'Pick and place shark toy'
+        }],
+        'Home 3': [{
+            'proper_home_name': 'Home 3',
+            'home_name': 'home_3',
+            'filename': 'opening_shower_curtain.mp4',
+            'proper_task_name': 'Opening shower curtain'
+        },
+        {
+            'proper_home_name': 'Home 3',
+            'home_name': 'home_3',
+            'filename': 'turning_off_light.mp4',
+            'proper_task_name': 'Turning off light'
+        },
+        {
+            'proper_home_name': 'Home 3',
+            'home_name': 'home_3',
+            'filename': 'opening_dishwasher_drawer.mp4',
+            'proper_task_name': 'Opening dishwasher drawer'
+        },
+        {
+            'proper_home_name': 'Home 3',
+            'home_name': 'home_3',
+            'filename': 'pick_toy_and_place_in_bin.mp4',
+            'proper_task_name': 'Pick toy and place in bin'
+        },
+        {
+            'proper_home_name': 'Home 3',
+            'home_name': 'home_3',
+            'filename': 'pickup_hand_towel.mp4',
+            'proper_task_name': 'Pickup hand towel'
+        },
+        {
+            'proper_home_name': 'Home 3',
+            'home_name': 'home_3',
+            'filename': 'pulling_dining_chair.mp4',
+            'proper_task_name': 'Pulling dining chair'
+        },
+        {
+            'proper_home_name': 'Home 3',
+            'home_name': 'home_3',
+            'filename': 'pressing_kettle_button.mp4',
+            'proper_task_name': 'Pressing kettle button'
+        },
+        {
+            'proper_home_name': 'Home 3',
+            'home_name': 'home_3',
+            'filename': 'opening_air_fryer.mp4',
+            'proper_task_name': 'Opening air fryer'
+        },
+        {
+            'proper_home_name': 'Home 3',
+            'home_name': 'home_3',
+            'filename': 'pick_and_place_cat_toy.mp4',
+            'proper_task_name': 'Pick and place cat toy'
+        },
+        {
+            'proper_home_name': 'Home 3',
+            'home_name': 'home_3',
+            'filename': 'closing_air_fryer.mp4',
+            'proper_task_name': 'Closing air fryer'
+        },
+        {
+            'proper_home_name': 'Home 3',
+            'home_name': 'home_3',
+            'filename': 'unplugging_charger.mp4',
+            'proper_task_name': 'Unplugging charger'
+        }],
+        'Home 2': [{
+            'proper_home_name': 'Home 2',
+            'home_name': 'home_2',
+            'filename': 'pour_from_transparent_cup.mp4',
+            'proper_task_name': 'Pour from transparent cup'
+        },
+        {
+            'proper_home_name': 'Home 2',
+            'home_name': 'home_2',
+            'filename': 'place_rag_in_washing_machine.mp4',
+            'proper_task_name': 'Place rag in washing machine'
+        },
+        {
+            'proper_home_name': 'Home 2',
+            'home_name': 'home_2',
+            'filename': 'pick_up_trash_bag.mp4',
+            'proper_task_name': 'Pick up trash bag'
+        },
+        {
+            'proper_home_name': 'Home 2',
+            'home_name': 'home_2',
+            'filename': 'take_off_bath_tissue_roll.mp4',
+            'proper_task_name': 'Take off bath tissue roll'
+        },
+        {
+            'proper_home_name': 'Home 2',
+            'home_name': 'home_2',
+            'filename': 'opening_wardrobe_drawer.mp4',
+            'proper_task_name': 'Opening wardrobe drawer'
+        },
+        {
+            'proper_home_name': 'Home 2',
+            'home_name': 'home_2',
+            'filename': 'press_toaster_button.mp4',
+            'proper_task_name': 'Press toaster button'
+        },
+        {
+            'proper_home_name': 'Home 2',
+            'home_name': 'home_2',
+            'filename': 'pick_and_place_plush_keyring.mp4',
+            'proper_task_name': 'Pick and place plush keyring'
+        },
+        {
+            'proper_home_name': 'Home 2',
+            'home_name': 'home_2',
+            'filename': 'opening_washing_machine_door.mp4',
+            'proper_task_name': 'Opening washing machine door'
+        }],
+        'Home 5': [{
+            'proper_home_name': 'Home 5',
+            'home_name': 'home_5',
+            'filename': 'opening_kitchen_cabinet_drawer.mp4',
+            'proper_task_name': 'Opening kitchen cabinet drawer'
+        },
+        {
+            'proper_home_name': 'Home 5',
+            'home_name': 'home_5',
+            'filename': 'opening_microwave_door.mp4',
+            'proper_task_name': 'Opening microwave door'
+        },
+        {
+            'proper_home_name': 'Home 5',
+            'home_name': 'home_5',
+            'filename': 'pickup_paper_towel_roll.mp4',
+            'proper_task_name': 'Pickup paper towel roll'
+        },
+        {
+            'proper_home_name': 'Home 5',
+            'home_name': 'home_5',
+            'filename': 'pulling_chair.mp4',
+            'proper_task_name': 'Pulling chair'
+        },
+        {
+            'proper_home_name': 'Home 5',
+            'home_name': 'home_5',
+            'filename': 'rotating_stove_knob.mp4',
+            'proper_task_name': 'Rotating stove knob'
+        },
+        {
+            'proper_home_name': 'Home 5',
+            'home_name': 'home_5',
+            'filename': 'pulling_dvd_from_shelf.mp4',
+            'proper_task_name': 'Pulling dvd from shelf'
+        },
+        {
+            'proper_home_name': 'Home 5',
+            'home_name': 'home_5',
+            'filename': 'pickup_kitchen_towel.mp4',
+            'proper_task_name': 'Pickup kitchen towel'
+        },
+        {
+            'proper_home_name': 'Home 5',
+            'home_name': 'home_5',
+            'filename': 'closing_kitchen_cabinet_drawer.mp4',
+            'proper_task_name': 'Closing kitchen cabinet drawer'
+        }],
+        'Home 9': [{
+            'proper_home_name': 'Home 9',
+            'home_name': 'home_9',
+            'filename': 'opening_kitchen_drawer.mp4',
+            'proper_task_name': 'Opening kitchen drawer'
+        },
+        {
+            'proper_home_name': 'Home 9',
+            'home_name': 'home_9',
+            'filename': 'pickup_paper_bag.mp4',
+            'proper_task_name': 'Pickup paper bag'
+        },
+        {
+            'proper_home_name': 'Home 9',
+            'home_name': 'home_9',
+            'filename': 'opening_kitchen_door.mp4',
+            'proper_task_name': 'Opening kitchen door'
+        },
+        {
+            'proper_home_name': 'Home 9',
+            'home_name': 'home_9',
+            'filename': 'closing_bathroom_drawer.mp4',
+            'proper_task_name': 'Closing bathroom drawer'
+        },
+        {
+            'proper_home_name': 'Home 9',
+            'home_name': 'home_9',
+            'filename': 'turn_off_lights.mp4',
+            'proper_task_name': 'Turn off lights'
+        },
+        {
+            'proper_home_name': 'Home 9',
+            'home_name': 'home_9',
+            'filename': 'pickup_kitchen_rag.mp4',
+            'proper_task_name': 'Pickup kitchen rag'
+        },
+        {
+            'proper_home_name': 'Home 9',
+            'home_name': 'home_9',
+            'filename': 'closing_kitchen_drawer.mp4',
+            'proper_task_name': 'Closing kitchen drawer'
+        },
+        {
+            'proper_home_name': 'Home 9',
+            'home_name': 'home_9',
+            'filename': 'pickup_hat.mp4',
+            'proper_task_name': 'Pickup hat'
+        },
+        {
+            'proper_home_name': 'Home 9',
+            'home_name': 'home_9',
+            'filename': 'dining_chair_pulling.mp4',
+            'proper_task_name': 'Dining chair pulling'
+        },
+        {
+            'proper_home_name': 'Home 9',
+            'home_name': 'home_9',
+            'filename': 'pulling_book_from_stack.mp4',
+            'proper_task_name': 'Pulling book from stack'
+        }],
+        'Home 7': [{
+            'proper_home_name': 'Home 7',
+            'home_name': 'home_7',
+            'filename': 'pickup_trash_bag.mp4',
+            'proper_task_name': 'Pickup trash bag'
+        },
+        {
+            'proper_home_name': 'Home 7',
+            'home_name': 'home_7',
+            'filename': 'picking_tissue_paper.mp4',
+            'proper_task_name': 'Picking tissue paper'
+        },
+        {
+            'proper_home_name': 'Home 7',
+            'home_name': 'home_7',
+            'filename': 'closing_white_drawer.mp4',
+            'proper_task_name': 'Closing white drawer'
+        },
+        {
+            'proper_home_name': 'Home 7',
+            'home_name': 'home_7',
+            'filename': 'closing_black_drawer.mp4',
+            'proper_task_name': 'Closing black drawer'
+        },
+        {
+            'proper_home_name': 'Home 7',
+            'home_name': 'home_7',
+            'filename': 'closing_wardrobe_drawer.mp4',
+            'proper_task_name': 'Closing wardrobe drawer'
+        },
+        {
+            'proper_home_name': 'Home 7',
+            'home_name': 'home_7',
+            'filename': 'pickup_paper_towel_roll.mp4',
+            'proper_task_name': 'Pickup paper towel roll'
+        },
+        {
+            'proper_home_name': 'Home 7',
+            'home_name': 'home_7',
+            'filename': 'closing_brown_drawer.mp4',
+            'proper_task_name': 'Closing brown drawer'
+        },
+        {
+            'proper_home_name': 'Home 7',
+            'home_name': 'home_7',
+            'filename': 'pulling_desk_chair.mp4',
+            'proper_task_name': 'Pulling desk chair'
+        },
+        {
+            'proper_home_name': 'Home 7',
+            'home_name': 'home_7',
+            'filename': 'pulling_dining_chair.mp4',
+            'proper_task_name': 'Pulling dining chair'
+        },
+        {
+            'proper_home_name': 'Home 7',
+            'home_name': 'home_7',
+            'filename': 'closing_kitchen_cabinet_door.mp4',
+            'proper_task_name': 'Closing kitchen cabinet door'
+        },
+        {
+            'proper_home_name': 'Home 7',
+            'home_name': 'home_7',
+            'filename': 'pickup_kitchen_towel.mp4',
+            'proper_task_name': 'Pickup kitchen towel'
+        },
+        {
+            'proper_home_name': 'Home 7',
+            'home_name': 'home_7',
+            'filename': 'opening_bathroom_cabinet_door.mp4',
+            'proper_task_name': 'Opening bathroom cabinet door'
+        }],
+        'Home 6': [{
+            'proper_home_name': 'Home 6',
+            'home_name': 'home_6',
+            'filename': 'pickup_paper_bag.mp4',
+            'proper_task_name': 'Pickup paper bag'
+        },
+        {
+            'proper_home_name': 'Home 6',
+            'home_name': 'home_6',
+            'filename': 'opening_dishwasher_drawer.mp4',
+            'proper_task_name': 'Opening dishwasher drawer'
+        },
+        {
+            'proper_home_name': 'Home 6',
+            'home_name': 'home_6',
+            'filename': 'opening_kitchen_door.mp4',
+            'proper_task_name': 'Opening kitchen door'
+        },
+        {
+            'proper_home_name': 'Home 6',
+            'home_name': 'home_6',
+            'filename': 'pickup_tissue_paper.mp4',
+            'proper_task_name': 'Pickup tissue paper'
+        },
+        {
+            'proper_home_name': 'Home 6',
+            'home_name': 'home_6',
+            'filename': 'pick_and_place_lantern.mp4',
+            'proper_task_name': 'Pick and place lantern'
+        },
+        {
+            'proper_home_name': 'Home 6',
+            'home_name': 'home_6',
+            'filename': 'pulling_table.mp4',
+            'proper_task_name': 'Pulling table'
+        },
+        {
+            'proper_home_name': 'Home 6',
+            'home_name': 'home_6',
+            'filename': 'pulling_desk_chair.mp4',
+            'proper_task_name': 'Pulling desk chair'
+        },
+        {
+            'proper_home_name': 'Home 6',
+            'home_name': 'home_6',
+            'filename': 'closing_kitchen_drawer.mp4',
+            'proper_task_name': 'Closing kitchen drawer'
+        },
+        {
+            'proper_home_name': 'Home 6',
+            'home_name': 'home_6',
+            'filename': 'pickup_kitchen_towel.mp4',
+            'proper_task_name': 'Pickup kitchen towel'
+        },
+        {
+            'proper_home_name': 'Home 6',
+            'home_name': 'home_6',
+            'filename': 'pick_book_from_shelf.mp4',
+            'proper_task_name': 'Pick book from shelf'
+        },
+        {
+            'proper_home_name': 'Home 6',
+            'home_name': 'home_6',
+            'filename': 'straightening_cushion.mp4',
+            'proper_task_name': 'Straightening cushion'
+        },
+        {
+            'proper_home_name': 'Home 6',
+            'home_name': 'home_6',
+            'filename': 'opening_bathroom_cabinet_door.mp4',
+            'proper_task_name': 'Opening bathroom cabinet door'
+        },
+        {
+            'proper_home_name': 'Home 6',
+            'home_name': 'home_6',
+            'filename': 'closing_table_drawer.mp4',
+            'proper_task_name': 'Closing table drawer'
+        }],
+        'Home 1': [{
+            'proper_home_name': 'Home 1',
+            'home_name': 'home_1',
+            'filename': 'opening_horizontal_blinds.mp4',
+            'proper_task_name': 'Opening horizontal blinds'
+        },
+        {
+            'proper_home_name': 'Home 1',
+            'home_name': 'home_1',
+            'filename': 'opening_kitchen_cabinet_drawer.mp4',
+            'proper_task_name': 'Opening kitchen cabinet drawer'
+        },
+        {
+            'proper_home_name': 'Home 1',
+            'home_name': 'home_1',
+            'filename': 'pouring_marshmallows.mp4',
+            'proper_task_name': 'Pouring marshmallows'
+        },
+        {
+            'proper_home_name': 'Home 1',
+            'home_name': 'home_1',
+            'filename': 'picking_up_and_placing_spice_bottle.mp4',
+            'proper_task_name': 'Picking up and placing spice bottle'
+        },
+        {
+            'proper_home_name': 'Home 1',
+            'home_name': 'home_1',
+            'filename': 'turning_knob.mp4',
+            'proper_task_name': 'Turning knob'
+        },
+        {
+            'proper_home_name': 'Home 1',
+            'home_name': 'home_1',
+            'filename': 'closing_kitchen_cabinet_door.mp4',
+            'proper_task_name': 'Closing kitchen cabinet door'
+        },
+        {
+            'proper_home_name': 'Home 1',
+            'home_name': 'home_1',
+            'filename': 'opening_air_fryer.mp4',
+            'proper_task_name': 'Opening air fryer'
+        },
+        {
+            'proper_home_name': 'Home 1',
+            'home_name': 'home_1',
+            'filename': 'pick_and_place_plate.mp4',
+            'proper_task_name': 'Pick and place plate'
+        },
+        {
+            'proper_home_name': 'Home 1',
+            'home_name': 'home_1',
+            'filename': 'closing_air_fryer.mp4',
+            'proper_task_name': 'Closing air fryer'
+        },
+        {
+            'proper_home_name': 'Home 1',
+            'home_name': 'home_1',
+            'filename': 'closing_kitchen_cabinet_drawer.mp4',
+            'proper_task_name': 'Closing kitchen cabinet drawer'
+        },
+        {
+            'proper_home_name': 'Home 1',
+            'home_name': 'home_1',
+            'filename': 'pickup_flower_from_vase.mp4',
+            'proper_task_name': 'Pickup flower from vase'
+        },
+        {
+            'proper_home_name': 'Home 1',
+            'home_name': 'home_1',
+            'filename': 'opening_vertical_blinds.mp4',
+            'proper_task_name': 'Opening vertical blinds'
+        }],
+        'Home 8': [{
+            'proper_home_name': 'Home 8',
+            'home_name': 'home_8',
+            'filename': 'pulling_game_from_shelf.mp4',
+            'proper_task_name': 'Pulling game from shelf'
+        },
+        {
+            'proper_home_name': 'Home 8',
+            'home_name': 'home_8',
+            'filename': 'pickup_hand_towel.mp4',
+            'proper_task_name': 'Pickup hand towel'
+        },
+        {
+            'proper_home_name': 'Home 8',
+            'home_name': 'home_8',
+            'filename': 'pickup_tissue_paper.mp4',
+            'proper_task_name': 'Pickup tissue paper'
+        },
+        {
+            'proper_home_name': 'Home 8',
+            'home_name': 'home_8',
+            'filename': 'pickup_food_delivery_bag.mp4',
+            'proper_task_name': 'Pickup food delivery bag'
+        },
+        {
+            'proper_home_name': 'Home 8',
+            'home_name': 'home_8',
+            'filename': 'pulling_dining_stool.mp4',
+            'proper_task_name': 'Pulling dining stool'
+        },
+        {
+            'proper_home_name': 'Home 8',
+            'home_name': 'home_8',
+            'filename': 'pickup_paper_towel_roll.mp4',
+            'proper_task_name': 'Pickup paper towel roll'
+        },
+        {
+            'proper_home_name': 'Home 8',
+            'home_name': 'home_8',
+            'filename': 'flushing_toilet.mp4',
+            'proper_task_name': 'Flushing toilet'
+        },
+        {
+            'proper_home_name': 'Home 8',
+            'home_name': 'home_8',
+            'filename': 'open_closet_door.mp4',
+            'proper_task_name': 'Open closet door'
+        },
+        {
+            'proper_home_name': 'Home 8',
+            'home_name': 'home_8',
+            'filename': 'opening_air_fryer.mp4',
+            'proper_task_name': 'Opening air fryer'
+        },
+        {
+            'proper_home_name': 'Home 8',
+            'home_name': 'home_8',
+            'filename': 'pulling_book_from_shelf.mp4',
+            'proper_task_name': 'Pulling book from shelf'
+        },
+        {
+            'proper_home_name': 'Home 8',
+            'home_name': 'home_8',
+            'filename': 'closing_air_fryer.mp4',
+            'proper_task_name': 'Closing air fryer'
+        },
+        {
+            'proper_home_name': 'Home 8',
+            'home_name': 'home_8',
+            'filename': 'straightening_cushion.mp4',
+            'proper_task_name': 'Straightening cushion'
+        },
+        {
+            'proper_home_name': 'Home 8',
+            'home_name': 'home_8',
+            'filename': 'unplugging_charger.mp4',
+            'proper_task_name': 'Unplugging charger'
+        }],
+        'Home 10': [{
+            'proper_home_name': 'Home 10',
+            'home_name': 'home_10',
+            'filename': 'air_fryer_closing.mp4',
+            'proper_task_name': 'Air fryer closing'
+        },
+        {
+            'proper_home_name': 'Home 10',
+            'home_name': 'home_10',
+            'filename': 'straighten_cushion.mp4',
+            'proper_task_name': 'Straighten cushion'
+        },
+        {
+            'proper_home_name': 'Home 10',
+            'home_name': 'home_10',
+            'filename': 'close_kitchen_door.mp4',
+            'proper_task_name': 'Close kitchen door'
+        },
+        {
+            'proper_home_name': 'Home 10',
+            'home_name': 'home_10',
+            'filename': 'pickup_hand_towel.mp4',
+            'proper_task_name': 'Pickup hand towel'
+        },
+        {
+            'proper_home_name': 'Home 10',
+            'home_name': 'home_10',
+            'filename': 'pickup_paper_towel_roll.mp4',
+            'proper_task_name': 'Pickup paper towel roll'
+        },
+        {
+            'proper_home_name': 'Home 10',
+            'home_name': 'home_10',
+            'filename': 'air_fryer_opening.mp4',
+            'proper_task_name': 'Air fryer opening'
+        },
+        {
+            'proper_home_name': 'Home 10',
+            'home_name': 'home_10',
+            'filename': 'shelf_drawer_closing.mp4',
+            'proper_task_name': 'Shelf drawer closing'
+        },
+        {
+            'proper_home_name': 'Home 10',
+            'home_name': 'home_10',
+            'filename': 'pulling_book_from_shelf.mp4',
+            'proper_task_name': 'Pulling book from shelf'
+        },
+        {
+            'proper_home_name': 'Home 10',
+            'home_name': 'home_10',
+            'filename': 'turning_on_light.mp4',
+            'proper_task_name': 'Turning on light'
+        }]
+    };
+    const probPerTask = {
+        "Door closing": 2,
+        "Door opening": 2,
+        "Drawer closing": 2,
+        "Drawer opening": 2,
+        "Handle grasping": 1,
+        "Pick and place": 2,
+        "Play data": 3,
+        "Switch button": 1
+    };
+    const totalPerTask = {
+        "Door closing": 40,
+        "Door opening": 48,
+        "Drawer closing": 30,
+        "Drawer opening": 28,
+        "Handle grasping": 16,
+        "Pick and place": 22,
+        "Play data": 15,
+        "Switch button": 17
+    };
+    const cumulativeTotalPerTask = {
+        "Door closing": 40,
+        "Door opening": 88,
+        "Drawer closing": 118,
+        "Drawer opening": 146,
+        "Handle grasping": 162,
+        "Pick and place": 184,
+        "Play data": 199,
+        "Switch button": 216
+    };
+    const lastChosen = [];
+
+    function weightedRand(normalizedProbabilities) {
+        const r = Math.random();
+        let index = 0;
+        let cumulativeProbability = 0;
+        while (index < normalizedProbabilities.length) {
+            cumulativeProbability += normalizedProbabilities[index];
+            if (r < cumulativeProbability) {
+                return index;
+            }
+            index++;
+        }
+        return index;
+    }
+
+    function chooseRandomVideoIndex() {
+        // Choose a random index while giving equal probability to each task_class
+        const taskClass = Object.keys(totalPerTask);
+        const taskClassProbabilities = taskClass.map((task) => probPerTask[task]);
+        const total = taskClassProbabilities.reduce((a, b) => a + b, 0);
+        const taskClassProbabilitiesNormalized = taskClassProbabilities.map((task) => task / total);
+        const randomTaskClass = weightedRand(taskClassProbabilitiesNormalized);
+        const randomTaskClassIndex = taskClass[randomTaskClass];
+        const randomTaskClassTotal = totalPerTask[randomTaskClassIndex];
+        const randomTaskClassIndexWithinTotal = Math.floor(Math.random() * randomTaskClassTotal);
+        const randomIndex = cumulativeTotalPerTask[randomTaskClassIndex] - randomTaskClassIndexWithinTotal - 1;
+        return randomIndex;
+    }
+    var notChosen168 = true;
+    function chooseUniqueRandomVideoIndex(maxLen = 12) {
+        // Choose a random index while giving equal probability to each task_class
+        if (notChosen168 && Math.random() < 0.1) {
+            notChosen168 = false;
+            return 168;
+        }
+        var randomIndex = chooseRandomVideoIndex();
+        while (lastChosen.includes(randomIndex)) {
+            randomIndex = chooseRandomVideoIndex();
+        }
+        while (lastChosen.length >= maxLen) {
+            lastChosen.shift();
+        }
+        lastChosen.push(randomIndex);
+        if (randomIndex >= 216) {
+            return 215;
+        }
+        if (randomIndex < 0) {
+            return 0;
+        }
+        return randomIndex;
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // Get all "navbar-burger" elements
+        const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+        // Add a click event on each of them
+        $navbarBurgers.forEach(el => {
+            el.addEventListener('click', () => {
+
+                // Get the target from the "data-target" attribute
+                const target = el.dataset.target;
+                const $target = document.getElementById(target);
+
+                // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+                el.classList.toggle('is-active');
+                $target.classList.toggle('is-active');
+            });
+        });
+
+        const $navbarItems = Array.prototype.slice.call(document.querySelectorAll('.navbar-item'), 0);
+        $navbarItems.forEach(el => {
+            el.addEventListener('click', () => {
+                const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+                $navbarBurgers.forEach(el => {
+                    const target = el.dataset.target;
+                    const $target = document.getElementById(target);
+                    el.classList.remove('is-active');
+                    $target.classList.remove('is-active');
+                });
+            });
+        });
+
+        // Add a random selection of demo videos to the page on the dataset-demo div.
+        const datasetDemo = document.getElementById('dataset-demo');
+        // Choose 12 random indices between 0 and 215 (inclusive) to show on the page.
+        const randomIndices = Array.from({ length: 6 }, () => chooseUniqueRandomVideoIndex());
+        // For each of the random indices, create a tile with the video and the title.
+        randomIndices.forEach((index) => {
+            const tile = document.createElement('div');
+            tile.classList.add('column', 'is-6-mobile', 'is-one-third-tablet', 'is-one-fifth-desktop', 'is-2-widescreen');
+            const video = document.createElement('video');
+            video.classList.add('is-square-video');
+            video.setAttribute('muted', '');
+            video.setAttribute('autoplay', '');
+            video.setAttribute('playsinline', '');
+            video.setAttribute('poster', 'data:image/gif,AAAA');
+            video.setAttribute('src', `mfiles/demo_videos/${index}.mp4`);
+            video.classList.add('is-1');
+            video.addEventListener('ended', function (ended) {
+                // This function will be called when the current video has finished playing
+                // You can replace the video source with a new video here
+                // pick a random video from 0-215
+                const newIndex = chooseUniqueRandomVideoIndex();
+                const [task, home, env] = videoData[newIndex];
+                this.src = `mfiles/demo_videos/${newIndex}.mp4`; // Replace with the new video source
+                this.load(); // Reload the video element to start playing the new video
+                this.nextSibling.innerText = `${task}\nhome ${home}`;
+            });
+            video.addEventListener('loadstart', function (event) {
+                this.classList.add('is-loading');
+            });
+            video.addEventListener('canplay', function (event) {
+                this.classList.remove('is-loading');
+                this.muted = true;
+                this.play();
+            });
+            const title = document.createElement('p');
+            title.classList.add('is-1', 'caption', 'has-text-light');
+            // Retrieve relevant data from videoDict
+            const [task, home, env] = videoData[index];
+            title.innerText = `${task}\nhome ${home}`;
+            tile.appendChild(video);
+            tile.appendChild(title);
+
+            datasetDemo.appendChild(tile);
+        });
+
+        // Add listeners for the video selection.
+        const taskSelection = document.getElementById('video-task-selection');
+        const homeSelection = document.getElementById('video-home-selection');
+        const videoSelection = document.getElementById('selected_video');
+        videoSelection.muted = true;
+        videoSelection.addEventListener('loadstart', function (event) {
+            this.classList.add('is-loading');
+        });
+        videoSelection.addEventListener('canplay', function (event) {
+            this.classList.remove('is-loading');
+            this.muted = true;
+            this.play();
+        });
+        taskSelection.addEventListener("change", function (event) {
+            const task = event.target.value;
+            const home = homeSelection.value;
+            const properHomeName = homeSelection.value;
+            const videos = taskRollouts[properHomeName];
+            const filteredVideos = videos.filter((video) => video.filename === task);
+            const videoSelection = document.getElementById('selected_video');
+            videoSelection.src = `mfiles/compressed_video/${filteredVideos[0].home_name}/${filteredVideos[0].filename}`;
+            videoSelection.muted = true;
+            videoSelection.play();
+        });
+
+        function updateTaskList(home) {
+            const videos = taskRollouts[home];
+            // Now change the options for task selection
+            const taskSelection = document.getElementById('video-task-selection');
+            taskSelection.innerHTML = '';
+            videos.forEach((video) => {
+                const option = document.createElement('option');
+                option.value = video.filename;
+                option.innerText = video.proper_task_name;
+                taskSelection.appendChild(option);
+            });
+            return videos[0];
+
+        }
+        homeSelection.addEventListener("change", function (event) {
+            const properHomeName = this.value;
+            video = updateTaskList(properHomeName);
+            const videoSelection = document.getElementById('selected_video');
+            videoSelection.muted = true;
+            videoSelection.src = `mfiles/compressed_video/${video.home_name}/${video.filename}`;
+            videoSelection.muted = true;
+            videoSelection.play();
+        });
+
+        // Add shuffle option
+        function shuffleVideo() {
+            const randomHome = Object.keys(taskRollouts)[Math.floor(Math.random() * Object.keys(taskRollouts).length)];
+            const randomTask = taskRollouts[randomHome][Math.floor(Math.random() * taskRollouts[randomHome].length)];
+            const videoSelection = document.getElementById('selected_video');
+            homeSelection.value = randomTask.proper_home_name;
+            updateTaskList(randomTask.proper_home_name);
+            taskSelection.value = randomTask.filename;
+            videoSelection.src = `mfiles/compressed_video/${randomTask.home_name}/${randomTask.filename}`;
+            videoSelection.muted = true;
+            videoSelection.play();
+        }
+        shuffleVideo();
+        const shuffleButton = document.getElementById('shuffle-button');
+        shuffleButton.addEventListener('click', shuffleVideo);
+
+        // Toggle abstract when expand button is clicked
+        const expandButton = document.getElementById('expand-abstract');
+        const expandButtonText = document.getElementById('expand-abstract-text');
+        const expandButtonIcon = document.getElementById('expand-abstract-icon');
+        const abstract = document.getElementById('abstract');
+        expandButton.addEventListener('click', function (event) {
+            abstract.hidden = !abstract.hidden;
+            if (abstract.hidden) {
+                expandButtonText.innerText = 'Show abstract';
+                expandButtonIcon.name = "caret-down-outline";
+            } else {
+                expandButtonText.innerText = 'Hide abstract';
+                expandButtonIcon.name = "caret-forward-outline";
+            }
+        });
+    });
+
+    document.getElementById('citation-text').addEventListener('click', function () {
+        if (window.getSelection) {
+            var range = document.createRange();
+            range.selectNodeContents(this);
+            var selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+        }
+    });
+
+</script>
+
+</html>
