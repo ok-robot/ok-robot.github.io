@@ -5,31 +5,33 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description"
-        content="Dobb·E is an open-source framework for teaching robots household tasks via imitation learning in 20 minutes. The framework uses a simple tool called the Stick, collects a dataset called Homes of New York (HoNY) with it, and then trains a representation learning model, Home Pretrained Representations (HPR) with it. Then, Dobb·E uses five minutes of collected data in a new home for a novel task and within fifteen minutes, gives a policy that can solve the task with 81% average success rate.">
+        content="OK-Robot is an open framework for a modular system for zero-shot, language conditioned pick-and-drop tasks in arbitrary homes. OK-Robot accomplishes this with a modular design, using 3D VoxelMap for open-vocabulary navigation, AnyGrasp and LangSam for open-vocabulary grasping, and a dropping primitive for placing.">
     <meta name="keywords"
-        content="Home robotics, Home robots, Robots in home, Dobb·E, Dobb-E, Open source robot learning">
+        content="Home robotics, Home robots, Robots in home, OK-Robot, Open-knowledge robots, Open source robot learning">
     <link rel="author" href="https://mahis.life" />
-    <title>Dobb·E: On Bringing Robots Home</title>
-    <meta property="og:url" content="https://dobb-e.com/">
-    <meta property="og:image" content="https://dobb-e.com/mfiles/images/preview.jpg">
+    <title>OK-Robot: What Really Matters in Integrating Open-Knowledge Models for Robotics</title>
+    <meta property="og:url" content="https://ok-robot.github.io/">
+    <meta property="og:image" content="https://ok-robot.github.io/mfiles/images/preview.jpg">
     <meta property="og:description"
-        content="Dobb·E is an open-source framework for teaching robots new household tasks in 20 minutes via imitation learning.">
-    <meta property="og:title" content="Dobb·E: On Bringing Robots Home">
-    <meta property="og:site_name" content="Dobb·E: On Bringing Robots Home">
-    <meta property="og:see_also" content="https://dobb-e.com/">
+        content="OK-Robot is an open framework for zero-shot, natural language pick-and-drop system in arbitrary homes.">
+    <meta property="og:title" content="OK-Robot: What Really Matters in Integrating Open-Knowledge Models for Robotics">
+    <meta property="og:site_name"
+        content="OK-Robot: What Really Matters in Integrating Open-Knowledge Models for Robotics">
+    <meta property="og:see_also" content="https://ok-robot.github.io/">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://dobb-e.com/">
-    <meta name="twitter:title" content="Dobb·E: On Bringing Robots Home">
+    <meta name="twitter:url" content="https://ok-robot.github.io/">
+    <meta name="twitter:title"
+        content="OK-Robot: What Really Matters in Integrating Open-Knowledge Models for Robotics">
     <meta name="twitter:description"
-        content="Dobb·E is an open-source framework for teaching robots new household tasks in 20 minutes via imitation learning.">
-    <meta name="twitter:image" content="https://dobb-e.com/mfiles/images/preview.jpg">
+        content="OK-Robot is an open framework for zero-shot, natural language pick-and-drop system in arbitrary homes.">
+    <meta name="twitter:image" content="https://ok-robot.github.io/mfiles/images/preview.jpg">
     <meta name="twitter:image:alt" content="Dobb·E: On Bringing Robots Home">
     <meta name="twitter:site" content="@notmahi">
-    <meta name="twitter:player" content="https://dobb-e.com/mfiles/washing_machine.mp4">
+    <meta name="twitter:player" content="https://ok-robot.github.io/mfiles/washing_machine.mp4">
     <meta name="twitter:player:width" content="1280">
     <meta name="twitter:player:height" content="720">
-    <meta name="twitter:player:stream" content="https://dobb-e.com/mfiles/washing_machine.mp4">
+    <meta name="twitter:player:stream" content="https://ok-robot.github.io/mfiles/washing_machine.mp4">
     <meta name="twitter:player:stream:content_type" content="video/mp4">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
@@ -137,7 +139,7 @@
     <nav class="navbar" role="navigation" aria-label="main navigation" id="nav">
         <div class="navbar-brand">
             <a class="navbar-item is-success nav-link is-size-3" href="#">
-                <span class="icon"><img src="mfiles/logo.svg"></img></span><span>DOBB·E</span>
+                <span class="icon"><img src="mfiles/logo.svg"></img></span><span>OK-Robot</span>
             </a>
 
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
@@ -153,21 +155,21 @@
                         <span>Videos</span>
                     </div>
                 </a>
-                <a class="navbar-item link is-info nav-link" href="#hardware">
+                <!-- <a class="navbar-item link is-info nav-link" href="#hardware">
                     <div class="icon-text">
                         <span>Hardware</span>
                     </div>
-                </a>
-                <a class="navbar-item link is-info nav-link" href="#dataset">
+                </a> -->
+                <!-- <a class="navbar-item link is-info nav-link" href="#dataset">
                     <div class="icon-text">
                         <span>Dataset</span>
                     </div>
-                </a>
-                <a class="navbar-item link is-info nav-link" href="#models">
+                </a> -->
+                <!-- <a class="navbar-item link is-info nav-link" href="#models">
                     <div class="icon-text">
                         <span>Models</span>
                     </div>
-                </a>
+                </a> -->
                 <a class="navbar-item link is-info nav-link" href="#paper">
                     <div class="icon-text">
                         <span>Paper</span>
@@ -206,7 +208,7 @@
                         <h1 class="hero-text">
                             <!-- <span><img src="mfiles/logo.svg" class="hero-icon"></img></span> -->
                             <!-- <span> -->
-                            Dobb·E
+                            OK-Robot
                             <!-- </span> -->
                         </h1>
                     </div>
