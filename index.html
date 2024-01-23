@@ -166,11 +166,11 @@
                         <span>Dataset</span>
                     </div>
                 </a> -->
-                <!-- <a class="navbar-item link is-info nav-link" href="#models">
+                <a class="navbar-item link is-info nav-link" href="#analysis">
                     <div class="icon-text">
-                        <span>Models</span>
+                        <span>Analysis</span>
                     </div>
-                </a> -->
+                </a>
                 <a class="navbar-item link is-info nav-link" href="#paper">
                     <div class="icon-text">
                         <span>Paper</span>
@@ -255,26 +255,26 @@
                         </span>
                         <span>Read the paper</span>
                     </a>
-                    <a class="button is-outlined is-responsive" target="_blank"
-                        href="https://github.com/notmahi/dobb-e">
+                    <a class="button is-outlined is-responsive" target="_blank" href="#code">
                         <span class="icon">
                             <ion-icon name="logo-github"></ion-icon>
                         </span>
-                        <span>GitHub repo</span>
+                        <span>Code</span>
                     </a>
                 </div>
                 <div class="columns block">
                     <div class="column">
                         <figure>
-                            <video muted autoplay playsinline loop src="mfiles/washing_machine.mp4"></video>
+                            <video muted autoplay playsinline loop controls
+                                src="mfiles/header_video_ultra_ultra_compressed.mp4"></video>
                         </figure>
                     </div>
-                    <div class="column">
+                    <!-- <div class="column">
                         <figure>
                             <video muted autoplay playsinline loop
                                 src="mfiles/long_horizon_kitchen_30s_comp.mp4"></video>
                         </figure>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="container block columns">
                     <div class="column">
@@ -287,51 +287,28 @@
                         </div>
                         <div class="is-size-6 block" id="abstract" hidden>
                             <p>
-                                Throughout history, we have successfully integrated various machines into our homes.
-                                Dishwashers, laundry machines, stand mixers, and robot vacuums are just a few recent
-                                examples.
-                                However, these machines excel at performing only a single task effectively. The concept
-                                of a
-                                “generalist machine” in homes - a domestic assistant that can adapt and learn from our
-                                needs,
-                                all while remaining cost-effective - has long been a goal in robotics that has been
-                                steadily
-                                pursued for decades. In this work, we initiate a large-scale effort towards this goal by
-                                introducing Dobb·E, an affordable yet versatile general-purpose system for learning
-                                robotic
-                                manipulation within household settings. Dobb·E can learn a new task with only five
-                                minutes
-                                of a
-                                user showing it how to do it, thanks to a demonstration collection tool ("The Stick") we
-                                built
-                                out of cheap parts and iPhones. We use the Stick to collect 13 hours of data in 22 homes
-                                of
-                                New
-                                York City, and train Home Pretrained Representations (HPR). Then, in a novel home
-                                environment,
-                                with five minutes of demonstrations and fifteen minutes of adapting the HPR model, we
-                                show
-                                that
-                                Dobb·E can reliably solve the task on the Stretch, a mobile robot readily available on
-                                the
-                                market. Across roughly 30 days of experimentation in homes of New York City and
-                                surrounding
-                                areas, we test our system in 10 homes, with a total of 109 tasks in different
-                                environments,
-                                and
-                                finally achieve a success rate of 81%. Beyond success percentages, our experiments
-                                reveal a
-                                plethora of unique challenges absent or ignored in lab robotics. These range from
-                                effects of
-                                strong shadows to variable demonstration quality by non-expert users. With the hope of
-                                accelerating research on home robots, and eventually seeing robot butlers in every home,
-                                we
-                                open-source Dobb·E software stack and models, our data, and our hardware designs.
+                                Remarkable progress has been made in recent years in the fields of vision, language, and
+                                robotics. We now have vision models capable of recognizing objects based on language
+                                queries, navigation systems that can effectively control mobile systems, and grasping
+                                models that can handle a wide range of objects. Despite these advancements,
+                                general-purpose applications of robotics still lag behind, even though they rely on
+                                these fundamental capabilities of recognition, navigation, and grasping. In this paper,
+                                we adopt a systems-first approach to develop a new Open Knowledge-based robotics
+                                framework called OK-Robot. By combining Vision-Language Models (VLMs) for object
+                                detection, navigation primitives for movement, and grasping primitives for object
+                                manipulation, OK-Robot offers a integrated solution for pick-and-drop operations without
+                                requiring any training. To evaluate its performance, we run OK-Robot in 10 real-world
+                                home environments. The results demonstrate that OK-Robot achieves a 58.5% success rate
+                                in open-ended pick-and-drop tasks, representing a new state-of-the-art in Open
+                                Vocabulary Mobile Manipulation (OVMM) with nearly 1.8x the performance of prior work. On
+                                cleaner, uncluttered environments, OK-Robot's performance increases to 82%. However, the
+                                most important insight gained from OK-Robot is the critical role of nuanced details when
+                                combining Open Knowledge systems like VLMs with robotic modules.
                             </p>
                         </div>
                     </div>
                 </div>
-                <div class="container block columns">
+                <!-- <div class="container block columns">
                     <div class="column">
                         <div class="subtitle is-size-4">
                             <span>OK-Robot, in a nutshell:</span>
@@ -347,7 +324,7 @@
                             </figure>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -369,7 +346,7 @@
                     <div class="subtitle block">
                         <p class="hero-subtext">
                             In 10 homes of New York City, OK-Robot attempted 171 pick-and-drop tasks. Here are sample
-                            trials from 25 of them.
+                            trials from 5 homes, each showing 5 tasks.
                         </p>
                     </div>
                 </div>
@@ -379,15 +356,15 @@
                         <div class="column is-5">
                             <div class="select" style="display: block;">
                                 <select id="video-home-selection" style="width: 100%;">
-                                    <option value="Home 1">Home 1</option>
+                                    <!-- <option value="Home 1">Home 1</option> -->
                                     <option value="Home 2">Home 2</option>
-                                    <option value="Home 3">Home 3</option>
-                                    <option value="Home 4">Home 4</option>
-                                    <option value="Home 5">Home 5</option>
+                                    <!-- <option value="Home 3">Home 3</option> -->
+                                    <!-- <option value="Home 4">Home 4</option>
+                                    <option value="Home 5">Home 5</option> -->
                                     <option value="Home 6">Home 6</option>
                                     <option value="Home 7">Home 7</option>
                                     <option value="Home 8">Home 8</option>
-                                    <option value="Home 9">Home 9</option>
+                                    <!-- <option value="Home 9">Home 9</option> -->
                                     <option value="Home 10">Home 10</option>
                                 </select>
                             </div>
@@ -428,9 +405,28 @@
                     <div class="columns is-centered">
                         <div class="column is-12-mobile is-8-tablet video-holder">
                             <figure class="">
-                                <video style="width:100%" playsinline muted autoplay loop
-                                    src="mfiles/compressed_video/home_1/opening_horizontal_blinds.mp4"
-                                    id="selected_video"></video>
+                                <style>
+                                    .embed-container {
+                                        position: relative;
+                                        padding-bottom: 56.25%;
+                                        height: 0;
+                                        overflow: hidden;
+                                        max-width: 100%;
+                                    }
+
+                                    .embed-container iframe,
+                                    .embed-container object,
+                                    .embed-container embed {
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        width: 100%;
+                                        height: 100%;
+                                    }
+                                </style>
+                                <div class='embed-container'><iframe id="youtube-embed"
+                                        src='https://www.youtube.com/embed/-A2vuqFizZQ?fs=0&modestbranding=1&playsinline=1&rel=0'
+                                        frameborder='0' showinfo='0' allowfullscreen></iframe></div>
                             </figure>
                         </div>
                     </div>
@@ -593,6 +589,56 @@
             </div>
     </section> -->
 
+    <section class="hero is-fullheight-with-navbar" id="analysis">
+        <div class="hero-body block">
+            <div class="container">
+                <div class="container block">
+                    <div class="title block">
+                        <h1 class="hero-text">
+                            Analysis
+                        </h1>
+                    </div>
+                    <div class="subtitle block">
+                        <h2 class="hero-subtitle">
+                            Understanding the performance of OK-Robot
+                        </h2>
+                    </div>
+                    <div class="block">
+                        <div class="subtitle">
+                            <figure class="block">
+                                <img src="mfiles/images/sankey_failure_modes.png"
+                                    alt="A sankey diagram showing the analysis of success and failure modes of OK-Robot." />
+                            </figure>
+                            <p class="block hero-subtext">
+                                While our method can show zero-shot generalization in
+                                completely new environments, we probe OK-Robot to better
+                                understand when and how it succeeds and fails.
+                                While we find a 58.5% success rate at completely novel homes, at a closer look, we
+                                also notice a long tail of failure causes, which is presented in the figure above.
+                                We see that the leading three cause of failures are failing
+                                to retrieve the right object to navigate to from the semantic
+                                memory (9.3%), getting a difficult pose from the manipulation
+                                module (8.0%), and hardware difficulties (7.5%).
+                            </p>
+                            <p class="block hero-subtext">
+                                In the "Understanding the performance
+                                of OK-Robot" section of the paper,
+                                we go over the analysis of the failure modes presented in
+                                the figure above and discuss the most frequent cases.
+                            </p>
+                            <!-- 
+                            <p class="block hero-subtext">
+                                Or if you are using <span class="">🤗</span> <a href="https://huggingface.co/timm"
+                                    target="_blank">Pytorch Image Models (TIMM)</a>, you can simply
+                                start using it in a couple of lines:
+                            </p> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Pretrained models -->
     <!-- <section class="hero is-fullheight-with-navbar" id="models">
         <div class="hero-body block">
@@ -739,14 +785,14 @@
                     </div>
                     <div class="subtitle block">
                         <h2 class="hero-subtitle">
-                            On Bringing Robots Home
+                            OK-Robot: What Really Matters in Integrating Open-Knowledge Models for Robotics
                         </h2>
                     </div>
                     <div class="columns">
                         <div class="column is-12-mobile">
-                            <a href="https://arxiv.org/abs/2311.16098" target="_blank">
+                            <a href="https://arxiv.org/abs/2401.16098" target="_blank">
                                 <figure class="image">
-                                    <img src="mfiles/images/paper_preview.jpg" style="max-width: 95vw;" alt="Paper">
+                                    <img src="mfiles/images/paper.jpg" style="max-width: 95vw;" alt="Paper">
                                 </figure>
                             </a>
                         </div>
@@ -781,11 +827,11 @@
                     </div>
                     <div class="content">
                         <pre id="citation-text" style="max-width: 90vw; overflow-x: auto;">
-@misc{shafiullah2023dobbe,
-    title={On Bringing Robots Home}, 
-    author={Nur Muhammad Mahi Shafiullah and Anant Rai and Haritheja Etukuru and Yiqian Liu and Ishan Misra and Soumith Chintala and Lerrel Pinto},
-    year={2023},
-    eprint={2311.16098},
+@misc{liu2024okrobot,
+    title={OK-Robot: What Really Matters in Integrating Open-Knowledge Models for Robotics}, 
+    author={Peiqi Liu and Yaswanth Orru and Chris Paxton and Nur Muhammad Mahi Shafiullah and Lerrel Pinto},
+    year={2024},
+    eprint={2401.16098},
     archivePrefix={arXiv},
     primaryClass={cs.RO}
 }</pre>
@@ -808,36 +854,37 @@
                     </div>
                     <div class="subtitle block">
                         <h2 class="hero-subtitle">
-                            Get the code on github.
+                            All components of OK-Robot are open. Check back in for the release of our platform code
+                            soon!
                         </h2>
                     </div>
                     <div class="container block">
                         <div class="columns">
                             <div class="column">
                                 <a class="button is-outlined is-medium is-fullwidth" target="_blank"
-                                    href="https://github.com/notmahi/dobb-e">
+                                    href="https://github.com/facebookresearch/home-robot">
                                     <span class="icon">
                                         <ion-icon name="logo-github"></ion-icon>
                                     </span>
-                                    <span>GitHub repo</span>
+                                    <span>VoxelMap (@ Home Robot)</span>
                                 </a>
                             </div>
                             <div class="column">
                                 <a class="button is-outlined is-medium is-fullwidth" target="_blank"
-                                    href="https://docs.dobb-e.com">
+                                    href="https://github.com/graspnet/anygrasp_sdk">
                                     <span class="icon">
-                                        <ion-icon name="book-outline"></ion-icon>
+                                        <ion-icon name="logo-github"></ion-icon>
                                     </span>
-                                    <span>Documentation</span>
+                                    <span>AnyGrasp</span>
                                 </a>
                             </div>
                             <div class="column">
                                 <a class="button is-outlined is-medium is-fullwidth" target="_blank"
-                                    href="https://github.com/notmahi/dobb-e">
+                                    href="https://github.com/luca-medeiros/lang-segment-anything/">
                                     <span class="icon">
-                                        <ion-icon name="mail-outline"></ion-icon>
+                                        <ion-icon name="logo-github"></ion-icon>
                                     </span>
-                                    <span>Questions? Contact us.</span>
+                                    <span>Lang-SAM</span>
                                 </a>
                             </div>
                         </div>
@@ -856,6 +903,8 @@
                 <strong>OK-Robot</strong> by <a href="https://mahis.life">Mahi Shafiullah</a>.
                 The source code is licensed <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The
                 website content is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
+                The
+                website template is taken from <a href="https://dobb-e.com">Dobb·E</a>.
             </p>
         </div>
     </footer>
@@ -1629,6 +1678,7 @@
             });
         });
 
+        /*
         // Add a random selection of demo videos to the page on the dataset-demo div.
         const datasetDemo = document.getElementById('dataset-demo');
         // Choose 12 random indices between 0 and 215 (inclusive) to show on the page.
@@ -1738,7 +1788,7 @@
         shuffleVideo();
         const shuffleButton = document.getElementById('shuffle-button');
         shuffleButton.addEventListener('click', shuffleVideo);
-
+        */
         // Toggle abstract when expand button is clicked
         const expandButton = document.getElementById('expand-abstract');
         const expandButtonText = document.getElementById('expand-abstract-text');
