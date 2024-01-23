@@ -242,12 +242,12 @@
                         </span>
                         <span>Read the paper</span>
                     </a>
-                    <a class="button is-outlined is-responsive" target="_blank" href="#code">
+                    <!-- <a class="button is-outlined is-responsive" target="_blank" href="#code">
                         <span class="icon">
                             <ion-icon name="logo-github"></ion-icon>
                         </span>
                         <span>Code</span>
-                    </a>
+                    </a> -->
                 </div>
                 <div class="columns block">
                     <div class="column">
@@ -332,7 +332,8 @@
                     </div>
                     <div class="subtitle block">
                         <p class="hero-subtext">
-                            In 10 homes of New York City, OK-Robot attempted 171 pick-and-drop tasks. Here are sample
+                            In 10 home environments of New York City, OK-Robot attempted 171 pick-and-drop tasks. Here
+                            are sample
                             trials from 5 homes, each showing 5 tasks.
                         </p>
                     </div>
@@ -340,7 +341,7 @@
                 <div class="container block">
                     <!-- Dropdown for the video selection -->
                     <div class="columns">
-                        <div class="column is-5">
+                        <div class="column is-8">
                             <div class="select" style="display: block;">
                                 <select id="video-home-selection" style="width: 100%;">
                                     <!-- <option value="Home 1">Home 1</option> -->
@@ -356,7 +357,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="column is-5">
+                        <!-- <div class="column is-5">
                             <div class="select" style="display: block;">
                                 <select id="video-task-selection" style="width: 100%;">
                                     <option value="opening_horizontal_blinds.mp4">Opening horizontal blinds</option>
@@ -377,8 +378,8 @@
                                     <option value="opening_vertical_blinds.mp4">Opening vertical blinds</option>
                                 </select>
                             </div>
-                        </div>
-                        <div class="column is-2">
+                        </div> -->
+                        <div class="column is-4">
                             <button class="button is-info is-outlined" id="shuffle-button" style="width: 100%;">
                                 <span class="icon">
                                     <ion-icon name="shuffle-outline"></ion-icon>
@@ -690,6 +691,8 @@
 
 <script>
     const videoData = { 0: ["Door closing", "1", "1"], 1: ["Door closing", "2", "1"], 2: ["Door closing", "2", "2"], 3: ["Door closing", "3", "1"], 4: ["Door closing", "5", "1"], 5: ["Door closing", "5", "2"], 6: ["Door closing", "5", "3"], 7: ["Door closing", "7", "1"], 8: ["Door closing", "8", "1"], 9: ["Door closing", "8", "2"], 10: ["Door closing", "9", "1"], 11: ["Door closing", "9", "2"], 12: ["Door closing", "10", "1"], 13: ["Door closing", "11", "1"], 14: ["Door closing", "14", "1"], 15: ["Door closing", "14", "2"], 16: ["Door closing", "14", "3"], 17: ["Door closing", "15", "1"], 18: ["Door closing", "15", "2"], 19: ["Door closing", "15", "3"], 20: ["Door closing", "15", "4"], 21: ["Door closing", "15", "5"], 22: ["Door closing", "15", "6"], 23: ["Door closing", "15", "7"], 24: ["Door closing", "15", "8"], 25: ["Door closing", "16", "1"], 26: ["Door closing", "16", "2"], 27: ["Door closing", "16", "3"], 28: ["Door closing", "17", "1"], 29: ["Door closing", "18", "1"], 30: ["Door closing", "19", "1"], 31: ["Door closing", "19", "2"], 32: ["Door closing", "20", "2"], 33: ["Door closing", "20", "3"], 34: ["Door closing", "20", "4"], 35: ["Door closing", "20", "5"], 36: ["Door closing", "21", "1"], 37: ["Door closing", "21", "2"], 38: ["Door closing", "21", "3"], 39: ["Door closing", "22", "1"], 40: ["Door opening", "1", "1"], 41: ["Door opening", "2", "1"], 42: ["Door opening", "2", "2"], 43: ["Door opening", "3", "1"], 44: ["Door opening", "4", "1"], 45: ["Door opening", "4", "2"], 46: ["Door opening", "6", "1"], 47: ["Door opening", "6", "2"], 48: ["Door opening", "6", "3"], 49: ["Door opening", "6", "4"], 50: ["Door opening", "8", "1"], 51: ["Door opening", "8", "2"], 52: ["Door opening", "8", "3"], 53: ["Door opening", "9", "1"], 54: ["Door opening", "9", "2"], 55: ["Door opening", "10", "1"], 56: ["Door opening", "11", "1"], 57: ["Door opening", "12", "1"], 58: ["Door opening", "12", "2"], 59: ["Door opening", "12", "3"], 60: ["Door opening", "13", "1"], 61: ["Door opening", "13", "2"], 62: ["Door opening", "13", "4"], 63: ["Door opening", "13", "5"], 64: ["Door opening", "14", "1"], 65: ["Door opening", "14", "2"], 66: ["Door opening", "14", "3"], 67: ["Door opening", "15", "1"], 68: ["Door opening", "15", "2"], 69: ["Door opening", "15", "3"], 70: ["Door opening", "15", "4"], 71: ["Door opening", "16", "1"], 72: ["Door opening", "16", "2"], 73: ["Door opening", "16", "3"], 74: ["Door opening", "17", "1"], 75: ["Door opening", "18", "1"], 76: ["Door opening", "20", "2"], 77: ["Door opening", "20", "3"], 78: ["Door opening", "20", "4"], 79: ["Door opening", "21", "1"], 80: ["Door opening", "21", "2"], 81: ["Door opening", "21", "3"], 82: ["Door opening", "21", "4"], 83: ["Door opening", "21", "5"], 84: ["Door opening", "22", "1"], 85: ["Door opening", "22", "2"], 86: ["Door opening", "22", "3"], 87: ["Door opening", "22", "4"], 88: ["Drawer closing", "2", "1"], 89: ["Drawer closing", "3", "1"], 90: ["Drawer closing", "3", "2"], 91: ["Drawer closing", "4", "1"], 92: ["Drawer closing", "5", "1"], 93: ["Drawer closing", "5", "2"], 94: ["Drawer closing", "7", "1"], 95: ["Drawer closing", "8", "1"], 96: ["Drawer closing", "8", "2"], 97: ["Drawer closing", "9", "1"], 98: ["Drawer closing", "9", "2"], 99: ["Drawer closing", "9", "3"], 100: ["Drawer closing", "10", "1"], 101: ["Drawer closing", "10", "2"], 102: ["Drawer closing", "11", "1"], 103: ["Drawer closing", "14", "1"], 104: ["Drawer closing", "14", "2"], 105: ["Drawer closing", "14", "3"], 106: ["Drawer closing", "15", "1"], 107: ["Drawer closing", "15", "2"], 108: ["Drawer closing", "16", "1"], 109: ["Drawer closing", "19", "1"], 110: ["Drawer closing", "19", "2"], 111: ["Drawer closing", "19", "3"], 112: ["Drawer closing", "20", "1"], 113: ["Drawer closing", "20", "2"], 114: ["Drawer closing", "21", "1"], 115: ["Drawer closing", "21", "2"], 116: ["Drawer closing", "21", "3"], 117: ["Drawer closing", "22", "1"], 118: ["Drawer opening", "2", "1"], 119: ["Drawer opening", "3", "1"], 120: ["Drawer opening", "3", "2"], 121: ["Drawer opening", "4", "1"], 122: ["Drawer opening", "4", "2"], 123: ["Drawer opening", "4", "3"], 124: ["Drawer opening", "5", "1"], 125: ["Drawer opening", "5", "2"], 126: ["Drawer opening", "7", "1"], 127: ["Drawer opening", "8", "1"], 128: ["Drawer opening", "9", "1"], 129: ["Drawer opening", "9", "2"], 130: ["Drawer opening", "10", "1"], 131: ["Drawer opening", "10", "3"], 132: ["Drawer opening", "11", "1"], 133: ["Drawer opening", "13", "1"], 134: ["Drawer opening", "14", "1"], 135: ["Drawer opening", "14", "2"], 136: ["Drawer opening", "15", "1"], 137: ["Drawer opening", "15", "2"], 138: ["Drawer opening", "16", "1"], 139: ["Drawer opening", "17", "1"], 140: ["Drawer opening", "18", "1"], 141: ["Drawer opening", "19", "1"], 142: ["Drawer opening", "20", "1"], 143: ["Drawer opening", "20", "2"], 144: ["Drawer opening", "21", "1"], 145: ["Drawer opening", "22", "1"], 146: ["Handle grasping", "3", "1"], 147: ["Handle grasping", "5", "1"], 148: ["Handle grasping", "6", "1"], 149: ["Handle grasping", "6", "2"], 150: ["Handle grasping", "6", "3"], 151: ["Handle grasping", "6", "4"], 152: ["Handle grasping", "6", "5"], 153: ["Handle grasping", "7", "1"], 154: ["Handle grasping", "15", "1"], 155: ["Handle grasping", "16", "1"], 156: ["Handle grasping", "16", "2"], 157: ["Handle grasping", "19", "1"], 158: ["Handle grasping", "20", "1"], 159: ["Handle grasping", "21", "1"], 160: ["Handle grasping", "22", "1"], 161: ["Handle grasping", "22", "2"], 162: ["Pick and place", "2", "1"], 163: ["Pick and place", "3", "1"], 164: ["Pick and place", "5", "1"], 165: ["Pick and place", "7", "1"], 166: ["Pick and place", "7", "2"], 167: ["Pick and place", "8", "1"], 168: ["Pick and place", "10", "1"], 169: ["Pick and place", "11", "1"], 170: ["Pick and place", "11", "2"], 171: ["Pick and place", "12", "1"], 172: ["Pick and place", "14", "1"], 173: ["Pick and place", "14", "2"], 174: ["Pick and place", "14", "3"], 175: ["Pick and place", "15", "1"], 176: ["Pick and place", "16", "1"], 177: ["Pick and place", "16", "2"], 178: ["Pick and place", "16", "3"], 179: ["Pick and place", "20", "1"], 180: ["Pick and place", "20", "2"], 181: ["Pick and place", "21", "1"], 182: ["Pick and place", "21", "2"], 183: ["Pick and place", "21", "3"], 184: ["Play data", "1", "1"], 185: ["Play data", "3", "1"], 186: ["Play data", "5", "1"], 187: ["Play data", "11", "1"], 188: ["Play data", "14", "1"], 189: ["Play data", "14", "2"], 190: ["Play data", "14", "3"], 191: ["Play data", "14", "4"], 192: ["Play data", "15", "1"], 193: ["Play data", "16", "1"], 194: ["Play data", "19", "1"], 195: ["Play data", "20", "1"], 196: ["Play data", "21", "1"], 197: ["Play data", "22", "4"], 198: ["Play data", "22", "5"], 199: ["Switch button", "2", "1"], 200: ["Switch button", "3", "1"], 201: ["Switch button", "5", "1"], 202: ["Switch button", "11", "1"], 203: ["Switch button", "11", "2"], 204: ["Switch button", "14", "1"], 205: ["Switch button", "14", "2"], 206: ["Switch button", "15", "1"], 207: ["Switch button", "15", "2"], 208: ["Switch button", "15", "3"], 209: ["Switch button", "15", "4"], 210: ["Switch button", "16", "1"], 211: ["Switch button", "21", "1"], 212: ["Switch button", "21", "2"], 213: ["Switch button", "21", "3"], 214: ["Switch button", "21", "4"], 215: ["Switch button", "22", "1"] };
+    const YTVideoPrefix = "https://www.youtube.com/embed/";
+    const YTVideoSuffix = "?fs=0&modestbranding=1&playsinline=1&rel=0";
     const YTVideoID = {
         "Home 2": "-A2vuqFizZQ",
         "Home 6": "G7SBA5roNhI",
@@ -697,738 +700,8 @@
         "Home 8": "-zENt82QPEA",
         "Home 10": "lQszLfsUWJk",
     }
-    const taskRollouts = {
-        'Home 4': [{
-            'proper_home_name': 'Home 4',
-            'home_name': 'home_4',
-            'filename': 'pulling_chair.mp4',
-            'proper_task_name': 'Pulling chair'
-        },
-        {
-            'proper_home_name': 'Home 4',
-            'home_name': 'home_4',
-            'filename': 'pouring_chocolate_almonds.mp4',
-            'proper_task_name': 'Pouring chocolate almonds'
-        },
-        {
-            'proper_home_name': 'Home 4',
-            'home_name': 'home_4',
-            'filename': 'opening_closet_door.mp4',
-            'proper_task_name': 'Opening closet door'
-        },
-        {
-            'proper_home_name': 'Home 4',
-            'home_name': 'home_4',
-            'filename': 'opening_dishwasher_door.mp4',
-            'proper_task_name': 'Opening dishwasher door'
-        },
-        {
-            'proper_home_name': 'Home 4',
-            'home_name': 'home_4',
-            'filename': 'opening_freezer_door.mp4',
-            'proper_task_name': 'Opening freezer door'
-        },
-        {
-            'proper_home_name': 'Home 4',
-            'home_name': 'home_4',
-            'filename': 'pick_up_paper_bag.mp4',
-            'proper_task_name': 'Pick up paper bag'
-        },
-        {
-            'proper_home_name': 'Home 4',
-            'home_name': 'home_4',
-            'filename': 'pick_up_tissue_paper.mp4',
-            'proper_task_name': 'Pick up tissue paper'
-        },
-        {
-            'proper_home_name': 'Home 4',
-            'home_name': 'home_4',
-            'filename': 'closing_kitchen_cabinet_door.mp4',
-            'proper_task_name': 'Closing kitchen cabinet door'
-        },
-        {
-            'proper_home_name': 'Home 4',
-            'home_name': 'home_4',
-            'filename': 'pulling_book_from_shelf.mp4',
-            'proper_task_name': 'Pulling book from shelf'
-        },
-        {
-            'proper_home_name': 'Home 4',
-            'home_name': 'home_4',
-            'filename': 'closing_kitchen_cabinet_drawer.mp4',
-            'proper_task_name': 'Closing kitchen cabinet drawer'
-        },
-        {
-            'proper_home_name': 'Home 4',
-            'home_name': 'home_4',
-            'filename': 'pouring_oil.mp4',
-            'proper_task_name': 'Pouring oil'
-        },
-        {
-            'proper_home_name': 'Home 4',
-            'home_name': 'home_4',
-            'filename': 'pick_and_place_shark_toy.mp4',
-            'proper_task_name': 'Pick and place shark toy'
-        }],
-        'Home 3': [{
-            'proper_home_name': 'Home 3',
-            'home_name': 'home_3',
-            'filename': 'opening_shower_curtain.mp4',
-            'proper_task_name': 'Opening shower curtain'
-        },
-        {
-            'proper_home_name': 'Home 3',
-            'home_name': 'home_3',
-            'filename': 'turning_off_light.mp4',
-            'proper_task_name': 'Turning off light'
-        },
-        {
-            'proper_home_name': 'Home 3',
-            'home_name': 'home_3',
-            'filename': 'opening_dishwasher_drawer.mp4',
-            'proper_task_name': 'Opening dishwasher drawer'
-        },
-        {
-            'proper_home_name': 'Home 3',
-            'home_name': 'home_3',
-            'filename': 'pick_toy_and_place_in_bin.mp4',
-            'proper_task_name': 'Pick toy and place in bin'
-        },
-        {
-            'proper_home_name': 'Home 3',
-            'home_name': 'home_3',
-            'filename': 'pickup_hand_towel.mp4',
-            'proper_task_name': 'Pickup hand towel'
-        },
-        {
-            'proper_home_name': 'Home 3',
-            'home_name': 'home_3',
-            'filename': 'pulling_dining_chair.mp4',
-            'proper_task_name': 'Pulling dining chair'
-        },
-        {
-            'proper_home_name': 'Home 3',
-            'home_name': 'home_3',
-            'filename': 'pressing_kettle_button.mp4',
-            'proper_task_name': 'Pressing kettle button'
-        },
-        {
-            'proper_home_name': 'Home 3',
-            'home_name': 'home_3',
-            'filename': 'opening_air_fryer.mp4',
-            'proper_task_name': 'Opening air fryer'
-        },
-        {
-            'proper_home_name': 'Home 3',
-            'home_name': 'home_3',
-            'filename': 'pick_and_place_cat_toy.mp4',
-            'proper_task_name': 'Pick and place cat toy'
-        },
-        {
-            'proper_home_name': 'Home 3',
-            'home_name': 'home_3',
-            'filename': 'closing_air_fryer.mp4',
-            'proper_task_name': 'Closing air fryer'
-        },
-        {
-            'proper_home_name': 'Home 3',
-            'home_name': 'home_3',
-            'filename': 'unplugging_charger.mp4',
-            'proper_task_name': 'Unplugging charger'
-        }],
-        'Home 2': [{
-            'proper_home_name': 'Home 2',
-            'home_name': 'home_2',
-            'filename': 'pour_from_transparent_cup.mp4',
-            'proper_task_name': 'Pour from transparent cup'
-        },
-        {
-            'proper_home_name': 'Home 2',
-            'home_name': 'home_2',
-            'filename': 'place_rag_in_washing_machine.mp4',
-            'proper_task_name': 'Place rag in washing machine'
-        },
-        {
-            'proper_home_name': 'Home 2',
-            'home_name': 'home_2',
-            'filename': 'pick_up_trash_bag.mp4',
-            'proper_task_name': 'Pick up trash bag'
-        },
-        {
-            'proper_home_name': 'Home 2',
-            'home_name': 'home_2',
-            'filename': 'take_off_bath_tissue_roll.mp4',
-            'proper_task_name': 'Take off bath tissue roll'
-        },
-        {
-            'proper_home_name': 'Home 2',
-            'home_name': 'home_2',
-            'filename': 'opening_wardrobe_drawer.mp4',
-            'proper_task_name': 'Opening wardrobe drawer'
-        },
-        {
-            'proper_home_name': 'Home 2',
-            'home_name': 'home_2',
-            'filename': 'press_toaster_button.mp4',
-            'proper_task_name': 'Press toaster button'
-        },
-        {
-            'proper_home_name': 'Home 2',
-            'home_name': 'home_2',
-            'filename': 'pick_and_place_plush_keyring.mp4',
-            'proper_task_name': 'Pick and place plush keyring'
-        },
-        {
-            'proper_home_name': 'Home 2',
-            'home_name': 'home_2',
-            'filename': 'opening_washing_machine_door.mp4',
-            'proper_task_name': 'Opening washing machine door'
-        }],
-        'Home 5': [{
-            'proper_home_name': 'Home 5',
-            'home_name': 'home_5',
-            'filename': 'opening_kitchen_cabinet_drawer.mp4',
-            'proper_task_name': 'Opening kitchen cabinet drawer'
-        },
-        {
-            'proper_home_name': 'Home 5',
-            'home_name': 'home_5',
-            'filename': 'opening_microwave_door.mp4',
-            'proper_task_name': 'Opening microwave door'
-        },
-        {
-            'proper_home_name': 'Home 5',
-            'home_name': 'home_5',
-            'filename': 'pickup_paper_towel_roll.mp4',
-            'proper_task_name': 'Pickup paper towel roll'
-        },
-        {
-            'proper_home_name': 'Home 5',
-            'home_name': 'home_5',
-            'filename': 'pulling_chair.mp4',
-            'proper_task_name': 'Pulling chair'
-        },
-        {
-            'proper_home_name': 'Home 5',
-            'home_name': 'home_5',
-            'filename': 'rotating_stove_knob.mp4',
-            'proper_task_name': 'Rotating stove knob'
-        },
-        {
-            'proper_home_name': 'Home 5',
-            'home_name': 'home_5',
-            'filename': 'pulling_dvd_from_shelf.mp4',
-            'proper_task_name': 'Pulling dvd from shelf'
-        },
-        {
-            'proper_home_name': 'Home 5',
-            'home_name': 'home_5',
-            'filename': 'pickup_kitchen_towel.mp4',
-            'proper_task_name': 'Pickup kitchen towel'
-        },
-        {
-            'proper_home_name': 'Home 5',
-            'home_name': 'home_5',
-            'filename': 'closing_kitchen_cabinet_drawer.mp4',
-            'proper_task_name': 'Closing kitchen cabinet drawer'
-        }],
-        'Home 9': [{
-            'proper_home_name': 'Home 9',
-            'home_name': 'home_9',
-            'filename': 'opening_kitchen_drawer.mp4',
-            'proper_task_name': 'Opening kitchen drawer'
-        },
-        {
-            'proper_home_name': 'Home 9',
-            'home_name': 'home_9',
-            'filename': 'pickup_paper_bag.mp4',
-            'proper_task_name': 'Pickup paper bag'
-        },
-        {
-            'proper_home_name': 'Home 9',
-            'home_name': 'home_9',
-            'filename': 'opening_kitchen_door.mp4',
-            'proper_task_name': 'Opening kitchen door'
-        },
-        {
-            'proper_home_name': 'Home 9',
-            'home_name': 'home_9',
-            'filename': 'closing_bathroom_drawer.mp4',
-            'proper_task_name': 'Closing bathroom drawer'
-        },
-        {
-            'proper_home_name': 'Home 9',
-            'home_name': 'home_9',
-            'filename': 'turn_off_lights.mp4',
-            'proper_task_name': 'Turn off lights'
-        },
-        {
-            'proper_home_name': 'Home 9',
-            'home_name': 'home_9',
-            'filename': 'pickup_kitchen_rag.mp4',
-            'proper_task_name': 'Pickup kitchen rag'
-        },
-        {
-            'proper_home_name': 'Home 9',
-            'home_name': 'home_9',
-            'filename': 'closing_kitchen_drawer.mp4',
-            'proper_task_name': 'Closing kitchen drawer'
-        },
-        {
-            'proper_home_name': 'Home 9',
-            'home_name': 'home_9',
-            'filename': 'pickup_hat.mp4',
-            'proper_task_name': 'Pickup hat'
-        },
-        {
-            'proper_home_name': 'Home 9',
-            'home_name': 'home_9',
-            'filename': 'dining_chair_pulling.mp4',
-            'proper_task_name': 'Dining chair pulling'
-        },
-        {
-            'proper_home_name': 'Home 9',
-            'home_name': 'home_9',
-            'filename': 'pulling_book_from_stack.mp4',
-            'proper_task_name': 'Pulling book from stack'
-        }],
-        'Home 7': [{
-            'proper_home_name': 'Home 7',
-            'home_name': 'home_7',
-            'filename': 'pickup_trash_bag.mp4',
-            'proper_task_name': 'Pickup trash bag'
-        },
-        {
-            'proper_home_name': 'Home 7',
-            'home_name': 'home_7',
-            'filename': 'picking_tissue_paper.mp4',
-            'proper_task_name': 'Picking tissue paper'
-        },
-        {
-            'proper_home_name': 'Home 7',
-            'home_name': 'home_7',
-            'filename': 'closing_white_drawer.mp4',
-            'proper_task_name': 'Closing white drawer'
-        },
-        {
-            'proper_home_name': 'Home 7',
-            'home_name': 'home_7',
-            'filename': 'closing_black_drawer.mp4',
-            'proper_task_name': 'Closing black drawer'
-        },
-        {
-            'proper_home_name': 'Home 7',
-            'home_name': 'home_7',
-            'filename': 'closing_wardrobe_drawer.mp4',
-            'proper_task_name': 'Closing wardrobe drawer'
-        },
-        {
-            'proper_home_name': 'Home 7',
-            'home_name': 'home_7',
-            'filename': 'pickup_paper_towel_roll.mp4',
-            'proper_task_name': 'Pickup paper towel roll'
-        },
-        {
-            'proper_home_name': 'Home 7',
-            'home_name': 'home_7',
-            'filename': 'closing_brown_drawer.mp4',
-            'proper_task_name': 'Closing brown drawer'
-        },
-        {
-            'proper_home_name': 'Home 7',
-            'home_name': 'home_7',
-            'filename': 'pulling_desk_chair.mp4',
-            'proper_task_name': 'Pulling desk chair'
-        },
-        {
-            'proper_home_name': 'Home 7',
-            'home_name': 'home_7',
-            'filename': 'pulling_dining_chair.mp4',
-            'proper_task_name': 'Pulling dining chair'
-        },
-        {
-            'proper_home_name': 'Home 7',
-            'home_name': 'home_7',
-            'filename': 'closing_kitchen_cabinet_door.mp4',
-            'proper_task_name': 'Closing kitchen cabinet door'
-        },
-        {
-            'proper_home_name': 'Home 7',
-            'home_name': 'home_7',
-            'filename': 'pickup_kitchen_towel.mp4',
-            'proper_task_name': 'Pickup kitchen towel'
-        },
-        {
-            'proper_home_name': 'Home 7',
-            'home_name': 'home_7',
-            'filename': 'opening_bathroom_cabinet_door.mp4',
-            'proper_task_name': 'Opening bathroom cabinet door'
-        }],
-        'Home 6': [{
-            'proper_home_name': 'Home 6',
-            'home_name': 'home_6',
-            'filename': 'pickup_paper_bag.mp4',
-            'proper_task_name': 'Pickup paper bag'
-        },
-        {
-            'proper_home_name': 'Home 6',
-            'home_name': 'home_6',
-            'filename': 'opening_dishwasher_drawer.mp4',
-            'proper_task_name': 'Opening dishwasher drawer'
-        },
-        {
-            'proper_home_name': 'Home 6',
-            'home_name': 'home_6',
-            'filename': 'opening_kitchen_door.mp4',
-            'proper_task_name': 'Opening kitchen door'
-        },
-        {
-            'proper_home_name': 'Home 6',
-            'home_name': 'home_6',
-            'filename': 'pickup_tissue_paper.mp4',
-            'proper_task_name': 'Pickup tissue paper'
-        },
-        {
-            'proper_home_name': 'Home 6',
-            'home_name': 'home_6',
-            'filename': 'pick_and_place_lantern.mp4',
-            'proper_task_name': 'Pick and place lantern'
-        },
-        {
-            'proper_home_name': 'Home 6',
-            'home_name': 'home_6',
-            'filename': 'pulling_table.mp4',
-            'proper_task_name': 'Pulling table'
-        },
-        {
-            'proper_home_name': 'Home 6',
-            'home_name': 'home_6',
-            'filename': 'pulling_desk_chair.mp4',
-            'proper_task_name': 'Pulling desk chair'
-        },
-        {
-            'proper_home_name': 'Home 6',
-            'home_name': 'home_6',
-            'filename': 'closing_kitchen_drawer.mp4',
-            'proper_task_name': 'Closing kitchen drawer'
-        },
-        {
-            'proper_home_name': 'Home 6',
-            'home_name': 'home_6',
-            'filename': 'pickup_kitchen_towel.mp4',
-            'proper_task_name': 'Pickup kitchen towel'
-        },
-        {
-            'proper_home_name': 'Home 6',
-            'home_name': 'home_6',
-            'filename': 'pick_book_from_shelf.mp4',
-            'proper_task_name': 'Pick book from shelf'
-        },
-        {
-            'proper_home_name': 'Home 6',
-            'home_name': 'home_6',
-            'filename': 'straightening_cushion.mp4',
-            'proper_task_name': 'Straightening cushion'
-        },
-        {
-            'proper_home_name': 'Home 6',
-            'home_name': 'home_6',
-            'filename': 'opening_bathroom_cabinet_door.mp4',
-            'proper_task_name': 'Opening bathroom cabinet door'
-        },
-        {
-            'proper_home_name': 'Home 6',
-            'home_name': 'home_6',
-            'filename': 'closing_table_drawer.mp4',
-            'proper_task_name': 'Closing table drawer'
-        }],
-        'Home 1': [{
-            'proper_home_name': 'Home 1',
-            'home_name': 'home_1',
-            'filename': 'opening_horizontal_blinds.mp4',
-            'proper_task_name': 'Opening horizontal blinds'
-        },
-        {
-            'proper_home_name': 'Home 1',
-            'home_name': 'home_1',
-            'filename': 'opening_kitchen_cabinet_drawer.mp4',
-            'proper_task_name': 'Opening kitchen cabinet drawer'
-        },
-        {
-            'proper_home_name': 'Home 1',
-            'home_name': 'home_1',
-            'filename': 'pouring_marshmallows.mp4',
-            'proper_task_name': 'Pouring marshmallows'
-        },
-        {
-            'proper_home_name': 'Home 1',
-            'home_name': 'home_1',
-            'filename': 'picking_up_and_placing_spice_bottle.mp4',
-            'proper_task_name': 'Picking up and placing spice bottle'
-        },
-        {
-            'proper_home_name': 'Home 1',
-            'home_name': 'home_1',
-            'filename': 'turning_knob.mp4',
-            'proper_task_name': 'Turning knob'
-        },
-        {
-            'proper_home_name': 'Home 1',
-            'home_name': 'home_1',
-            'filename': 'closing_kitchen_cabinet_door.mp4',
-            'proper_task_name': 'Closing kitchen cabinet door'
-        },
-        {
-            'proper_home_name': 'Home 1',
-            'home_name': 'home_1',
-            'filename': 'opening_air_fryer.mp4',
-            'proper_task_name': 'Opening air fryer'
-        },
-        {
-            'proper_home_name': 'Home 1',
-            'home_name': 'home_1',
-            'filename': 'pick_and_place_plate.mp4',
-            'proper_task_name': 'Pick and place plate'
-        },
-        {
-            'proper_home_name': 'Home 1',
-            'home_name': 'home_1',
-            'filename': 'closing_air_fryer.mp4',
-            'proper_task_name': 'Closing air fryer'
-        },
-        {
-            'proper_home_name': 'Home 1',
-            'home_name': 'home_1',
-            'filename': 'closing_kitchen_cabinet_drawer.mp4',
-            'proper_task_name': 'Closing kitchen cabinet drawer'
-        },
-        {
-            'proper_home_name': 'Home 1',
-            'home_name': 'home_1',
-            'filename': 'pickup_flower_from_vase.mp4',
-            'proper_task_name': 'Pickup flower from vase'
-        },
-        {
-            'proper_home_name': 'Home 1',
-            'home_name': 'home_1',
-            'filename': 'opening_vertical_blinds.mp4',
-            'proper_task_name': 'Opening vertical blinds'
-        }],
-        'Home 8': [{
-            'proper_home_name': 'Home 8',
-            'home_name': 'home_8',
-            'filename': 'pulling_game_from_shelf.mp4',
-            'proper_task_name': 'Pulling game from shelf'
-        },
-        {
-            'proper_home_name': 'Home 8',
-            'home_name': 'home_8',
-            'filename': 'pickup_hand_towel.mp4',
-            'proper_task_name': 'Pickup hand towel'
-        },
-        {
-            'proper_home_name': 'Home 8',
-            'home_name': 'home_8',
-            'filename': 'pickup_tissue_paper.mp4',
-            'proper_task_name': 'Pickup tissue paper'
-        },
-        {
-            'proper_home_name': 'Home 8',
-            'home_name': 'home_8',
-            'filename': 'pickup_food_delivery_bag.mp4',
-            'proper_task_name': 'Pickup food delivery bag'
-        },
-        {
-            'proper_home_name': 'Home 8',
-            'home_name': 'home_8',
-            'filename': 'pulling_dining_stool.mp4',
-            'proper_task_name': 'Pulling dining stool'
-        },
-        {
-            'proper_home_name': 'Home 8',
-            'home_name': 'home_8',
-            'filename': 'pickup_paper_towel_roll.mp4',
-            'proper_task_name': 'Pickup paper towel roll'
-        },
-        {
-            'proper_home_name': 'Home 8',
-            'home_name': 'home_8',
-            'filename': 'flushing_toilet.mp4',
-            'proper_task_name': 'Flushing toilet'
-        },
-        {
-            'proper_home_name': 'Home 8',
-            'home_name': 'home_8',
-            'filename': 'open_closet_door.mp4',
-            'proper_task_name': 'Open closet door'
-        },
-        {
-            'proper_home_name': 'Home 8',
-            'home_name': 'home_8',
-            'filename': 'opening_air_fryer.mp4',
-            'proper_task_name': 'Opening air fryer'
-        },
-        {
-            'proper_home_name': 'Home 8',
-            'home_name': 'home_8',
-            'filename': 'pulling_book_from_shelf.mp4',
-            'proper_task_name': 'Pulling book from shelf'
-        },
-        {
-            'proper_home_name': 'Home 8',
-            'home_name': 'home_8',
-            'filename': 'closing_air_fryer.mp4',
-            'proper_task_name': 'Closing air fryer'
-        },
-        {
-            'proper_home_name': 'Home 8',
-            'home_name': 'home_8',
-            'filename': 'straightening_cushion.mp4',
-            'proper_task_name': 'Straightening cushion'
-        },
-        {
-            'proper_home_name': 'Home 8',
-            'home_name': 'home_8',
-            'filename': 'unplugging_charger.mp4',
-            'proper_task_name': 'Unplugging charger'
-        }],
-        'Home 10': [{
-            'proper_home_name': 'Home 10',
-            'home_name': 'home_10',
-            'filename': 'air_fryer_closing.mp4',
-            'proper_task_name': 'Air fryer closing'
-        },
-        {
-            'proper_home_name': 'Home 10',
-            'home_name': 'home_10',
-            'filename': 'straighten_cushion.mp4',
-            'proper_task_name': 'Straighten cushion'
-        },
-        {
-            'proper_home_name': 'Home 10',
-            'home_name': 'home_10',
-            'filename': 'close_kitchen_door.mp4',
-            'proper_task_name': 'Close kitchen door'
-        },
-        {
-            'proper_home_name': 'Home 10',
-            'home_name': 'home_10',
-            'filename': 'pickup_hand_towel.mp4',
-            'proper_task_name': 'Pickup hand towel'
-        },
-        {
-            'proper_home_name': 'Home 10',
-            'home_name': 'home_10',
-            'filename': 'pickup_paper_towel_roll.mp4',
-            'proper_task_name': 'Pickup paper towel roll'
-        },
-        {
-            'proper_home_name': 'Home 10',
-            'home_name': 'home_10',
-            'filename': 'air_fryer_opening.mp4',
-            'proper_task_name': 'Air fryer opening'
-        },
-        {
-            'proper_home_name': 'Home 10',
-            'home_name': 'home_10',
-            'filename': 'shelf_drawer_closing.mp4',
-            'proper_task_name': 'Shelf drawer closing'
-        },
-        {
-            'proper_home_name': 'Home 10',
-            'home_name': 'home_10',
-            'filename': 'pulling_book_from_shelf.mp4',
-            'proper_task_name': 'Pulling book from shelf'
-        },
-        {
-            'proper_home_name': 'Home 10',
-            'home_name': 'home_10',
-            'filename': 'turning_on_light.mp4',
-            'proper_task_name': 'Turning on light'
-        }]
-    };
-    const probPerTask = {
-        "Door closing": 2,
-        "Door opening": 2,
-        "Drawer closing": 2,
-        "Drawer opening": 2,
-        "Handle grasping": 1,
-        "Pick and place": 2,
-        "Play data": 3,
-        "Switch button": 1
-    };
-    const totalPerTask = {
-        "Door closing": 40,
-        "Door opening": 48,
-        "Drawer closing": 30,
-        "Drawer opening": 28,
-        "Handle grasping": 16,
-        "Pick and place": 22,
-        "Play data": 15,
-        "Switch button": 17
-    };
-    const cumulativeTotalPerTask = {
-        "Door closing": 40,
-        "Door opening": 88,
-        "Drawer closing": 118,
-        "Drawer opening": 146,
-        "Handle grasping": 162,
-        "Pick and place": 184,
-        "Play data": 199,
-        "Switch button": 216
-    };
-    const lastChosen = [];
 
-    function weightedRand(normalizedProbabilities) {
-        const r = Math.random();
-        let index = 0;
-        let cumulativeProbability = 0;
-        while (index < normalizedProbabilities.length) {
-            cumulativeProbability += normalizedProbabilities[index];
-            if (r < cumulativeProbability) {
-                return index;
-            }
-            index++;
-        }
-        return index;
-    }
 
-    function chooseRandomVideoIndex() {
-        // Choose a random index while giving equal probability to each task_class
-        const taskClass = Object.keys(totalPerTask);
-        const taskClassProbabilities = taskClass.map((task) => probPerTask[task]);
-        const total = taskClassProbabilities.reduce((a, b) => a + b, 0);
-        const taskClassProbabilitiesNormalized = taskClassProbabilities.map((task) => task / total);
-        const randomTaskClass = weightedRand(taskClassProbabilitiesNormalized);
-        const randomTaskClassIndex = taskClass[randomTaskClass];
-        const randomTaskClassTotal = totalPerTask[randomTaskClassIndex];
-        const randomTaskClassIndexWithinTotal = Math.floor(Math.random() * randomTaskClassTotal);
-        const randomIndex = cumulativeTotalPerTask[randomTaskClassIndex] - randomTaskClassIndexWithinTotal - 1;
-        return randomIndex;
-    }
-    var notChosen168 = true;
-    function chooseUniqueRandomVideoIndex(maxLen = 12) {
-        // Choose a random index while giving equal probability to each task_class
-        if (notChosen168 && Math.random() < 0.1) {
-            notChosen168 = false;
-            return 168;
-        }
-        var randomIndex = chooseRandomVideoIndex();
-        while (lastChosen.includes(randomIndex)) {
-            randomIndex = chooseRandomVideoIndex();
-        }
-        while (lastChosen.length >= maxLen) {
-            lastChosen.shift();
-        }
-        lastChosen.push(randomIndex);
-        if (randomIndex >= 216) {
-            return 215;
-        }
-        if (randomIndex < 0) {
-            return 0;
-        }
-        return randomIndex;
-    }
     document.addEventListener('DOMContentLoaded', () => {
 
         // Get all "navbar-burger" elements
@@ -1461,117 +734,70 @@
             });
         });
 
-        /*
-        // Add a random selection of demo videos to the page on the dataset-demo div.
-        const datasetDemo = document.getElementById('dataset-demo');
-        // Choose 12 random indices between 0 and 215 (inclusive) to show on the page.
-        const randomIndices = Array.from({ length: 6 }, () => chooseUniqueRandomVideoIndex());
-        // For each of the random indices, create a tile with the video and the title.
-        randomIndices.forEach((index) => {
-            const tile = document.createElement('div');
-            tile.classList.add('column', 'is-6-mobile', 'is-one-third-tablet', 'is-one-fifth-desktop', 'is-2-widescreen');
-            const video = document.createElement('video');
-            video.classList.add('is-square-video');
-            video.setAttribute('muted', '');
-            video.setAttribute('autoplay', '');
-            video.setAttribute('playsinline', '');
-            video.setAttribute('poster', 'data:image/gif,AAAA');
-            video.setAttribute('src', `mfiles/demo_videos/${index}.mp4`);
-            video.classList.add('is-1');
-            video.addEventListener('ended', function (ended) {
-                // This function will be called when the current video has finished playing
-                // You can replace the video source with a new video here
-                // pick a random video from 0-215
-                const newIndex = chooseUniqueRandomVideoIndex();
-                const [task, home, env] = videoData[newIndex];
-                this.src = `mfiles/demo_videos/${newIndex}.mp4`; // Replace with the new video source
-                this.load(); // Reload the video element to start playing the new video
-                this.nextSibling.innerText = `${task}\nhome ${home}`;
-            });
-            video.addEventListener('loadstart', function (event) {
-                this.classList.add('is-loading');
-            });
-            video.addEventListener('canplay', function (event) {
-                this.classList.remove('is-loading');
-                this.muted = true;
-                this.play();
-            });
-            const title = document.createElement('p');
-            title.classList.add('is-1', 'caption', 'has-text-light');
-            // Retrieve relevant data from videoDict
-            const [task, home, env] = videoData[index];
-            title.innerText = `${task}\nhome ${home}`;
-            tile.appendChild(video);
-            tile.appendChild(title);
-
-            datasetDemo.appendChild(tile);
-        });
 
         // Add listeners for the video selection.
         const taskSelection = document.getElementById('video-task-selection');
         const homeSelection = document.getElementById('video-home-selection');
-        const videoSelection = document.getElementById('selected_video');
-        videoSelection.muted = true;
-        videoSelection.addEventListener('loadstart', function (event) {
-            this.classList.add('is-loading');
-        });
-        videoSelection.addEventListener('canplay', function (event) {
-            this.classList.remove('is-loading');
-            this.muted = true;
-            this.play();
-        });
-        taskSelection.addEventListener("change", function (event) {
-            const task = event.target.value;
-            const home = homeSelection.value;
-            const properHomeName = homeSelection.value;
-            const videos = taskRollouts[properHomeName];
-            const filteredVideos = videos.filter((video) => video.filename === task);
-            const videoSelection = document.getElementById('selected_video');
-            videoSelection.src = `mfiles/compressed_video/${filteredVideos[0].home_name}/${filteredVideos[0].filename}`;
-            videoSelection.muted = true;
-            videoSelection.play();
-        });
+        const videoSelection = document.getElementById('youtube-embed');
+        // videoSelection.muted = true;
+        // videoSelection.addEventListener('loadstart', function (event) {
+        //     this.classList.add('is-loading');
+        // });
+        // videoSelection.addEventListener('canplay', function (event) {
+        //     this.classList.remove('is-loading');
+        //     this.muted = true;
+        //     this.play();
+        // });
+        // taskSelection.addEventListener("change", function (event) {
+        //     const task = event.target.value;
+        //     const home = homeSelection.value;
+        //     const properHomeName = homeSelection.value;
+        //     // const videos = taskRollouts[properHomeName];
+        //     // const filteredVideos = videos.filter((video) => video.filename === task);
+        //     const videoSelection = document.getElementById('selected_video');
+        //     videoSelection.src = `${YTVideoPrefix}${YTVideoID[properHomeName]}${YTVideoSuffix}`;
+        //     // videoSelection.muted = true;
+        //     // videoSelection.play();
+        // });
 
-        function updateTaskList(home) {
-            const videos = taskRollouts[home];
-            // Now change the options for task selection
-            const taskSelection = document.getElementById('video-task-selection');
-            taskSelection.innerHTML = '';
-            videos.forEach((video) => {
-                const option = document.createElement('option');
-                option.value = video.filename;
-                option.innerText = video.proper_task_name;
-                taskSelection.appendChild(option);
-            });
-            return videos[0];
+        // function updateTaskList(home) {
+        //     const videos = taskRollouts[home];
+        //     // Now change the options for task selection
+        //     const taskSelection = document.getElementById('video-task-selection');
+        //     taskSelection.innerHTML = '';
+        //     videos.forEach((video) => {
+        //         const option = document.createElement('option');
+        //         option.value = video.filename;
+        //         option.innerText = video.proper_task_name;
+        //         taskSelection.appendChild(option);
+        //     });
+        //     return videos[0];
 
-        }
+        // }
         homeSelection.addEventListener("change", function (event) {
             const properHomeName = this.value;
-            video = updateTaskList(properHomeName);
-            const videoSelection = document.getElementById('selected_video');
-            videoSelection.muted = true;
-            videoSelection.src = `mfiles/compressed_video/${video.home_name}/${video.filename}`;
-            videoSelection.muted = true;
-            videoSelection.play();
+            // video = updateTaskList(properHomeName);
+            const videoSelection = document.getElementById('youtube-embed');
+            videoSelection.src = `${YTVideoPrefix}${YTVideoID[properHomeName]}${YTVideoSuffix}`;
+            // videoSelection.muted = true;
+            // videoSelection.play();
         });
 
         // Add shuffle option
         function shuffleVideo() {
-            const randomHome = Object.keys(taskRollouts)[Math.floor(Math.random() * Object.keys(taskRollouts).length)];
-            const randomTask = taskRollouts[randomHome][Math.floor(Math.random() * taskRollouts[randomHome].length)];
-            const videoSelection = document.getElementById('selected_video');
-            homeSelection.value = randomTask.proper_home_name;
-            updateTaskList(randomTask.proper_home_name);
-            taskSelection.value = randomTask.filename;
-            videoSelection.src = `mfiles/compressed_video/${randomTask.home_name}/${randomTask.filename}`;
-            videoSelection.muted = true;
-            videoSelection.play();
+            const randomHome = Object.keys(YTVideoID)[Math.floor(Math.random() * Object.keys(YTVideoID).length)];
+            //     const randomTask = taskRollouts[randomHome][Math.floor(Math.random() * taskRollouts[randomHome].length)];
+            const videoSelection = document.getElementById('youtube-embed');
+            //     homeSelection.value = randomTask.proper_home_name;
+            //     updateTaskList(randomTask.proper_home_name);
+            //     taskSelection.value = randomTask.filename;
+            videoSelection.src = `${YTVideoPrefix}${YTVideoID[randomHome]}${YTVideoSuffix}`;
+            //     videoSelection.muted = true;
+            //     videoSelection.play();
         }
         shuffleVideo();
         const shuffleButton = document.getElementById('shuffle-button');
         shuffleButton.addEventListener('click', shuffleVideo);
-        */
         // Toggle abstract when expand button is clicked
         const expandButton = document.getElementById('expand-abstract');
         const expandButtonText = document.getElementById('expand-abstract-text');
