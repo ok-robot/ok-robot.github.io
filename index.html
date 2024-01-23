@@ -216,20 +216,6 @@
                             arbitrary homes.
                         </h2>
                     </div>
-                    <!-- <div class="subtitle block is-size-5-mobile is-size-4-tablet is-size-3 hero-subtext">
-                        <p class="">
-                            <span class="has-text-success-dark">109</span> tasks
-                        </p>
-                        <p class="">
-                            <span class="has-text-success-dark">10</span> NYC homes
-                        </p>
-                        <p>
-                            <span class="has-text-success-dark">81%</span> success rate
-                        </p>
-                        <p>
-                            <span class="has-text-success-dark">20</span> minutes to learn a new task
-                        </p>
-                    </div> -->
                     <div class="subtitle  is-size-7-mobile is-size-6-tablet block">
                         <p class="authors">
                             <a href="https://leo20021210.github.io/" target="_blank">Peiqi Liu*</a>,
@@ -403,7 +389,7 @@
                 </div>
                 <div class="block">
                     <div class="columns is-centered">
-                        <div class="column is-12-mobile is-8-tablet video-holder">
+                        <div class="column is-12-mobile is-12-tablet video-holder">
                             <figure class="">
                                 <style>
                                     .embed-container {
@@ -434,88 +420,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Hardware section
-    <section class="hero is-fullheight-with-navbar" id="hardware">
-        <div class="hero-body block">
-            <div class="container block">
-                <div class="container block">
-                    <div class="title block">
-                        <h1 class="hero-text">
-                            Hardware
-                        </h1>
-                    </div>
-                    <div class="subtitle block">
-                        <h2 class="hero-subtitle">
-                            The Stick
-                        </h2>
-                    </div>
-                </div>
-                <div class="block">
-                    <div class="columns is-centered">
-                        <div class="column is-12-mobile is-8-tablet">
-                            <figure class="">
-                                <video style="width:100%" muted playsinline autoplay loop
-                                    src="mfiles/stick_loop_compressed.mp4"></video>
-                            </figure>
-                        </div>
-                    </div>
-                </div>
-                <div class="container block">
-                    <div class="subtitle block">
-                        <p class="block">
-                            We believe one of the largest roadblocks to safe and scalable progress in home robotics,
-                            especially in imitation learning based approaches, is the lack of a cheap, ergonomic,
-                            and easy way to collect demonstrations for robots.
-                        </p>
-                        <p class="block">
-                            To address this, we built the <strong>Stick</strong>, a demonstration collection tool we
-                            built out of a $25 Reacher-grabber stick, some 3D printed parts, and an iPhone.
-                        </p>
-                    </div>
-                    <div class="columns block is-multiline">
-                        <div class="column">
-                            <a class="button is-outlined is-medium is-fullwidth" target="_blank"
-                                href="https://amazon.com/Vive-Foldable-Suction-Reacher-Grabber/dp/B08BPGJVRB/">
-                                <span class="icon">
-                                    <ion-icon name="cart-outline"></ion-icon>
-                                </span>
-                                <span>Get the reacher-grabber</span>
-                            </a>
-                        </div>
-                        <div class="column">
-                            <a class="button is-outlined is-medium is-fullwidth" target="_blank"
-                                href="https://github.com/notmahi/dobb-e/tree/main/hardware">
-                                <span class="icon">
-                                    <ion-icon name="construct-outline"></ion-icon>
-                                </span>
-                                <span>Download the 3D files</span>
-                            </a>
-                        </div>
-                        <div class="column">
-                            <a class="button is-outlined is-medium is-fullwidth" target="_blank"
-                                href="https://docs.dobb-e.com/hardware/putting-together-the-stick">
-                                <span class="icon">
-                                    <ion-icon name="book-outline"></ion-icon>
-                                </span>
-                                <span>Build and usage guide</span>
-                            </a>
-                        </div>
-                        <div class="column">
-                            <a class="button is-outlined is-medium is-fullwidth" target="_blank"
-                                href="https://github.com/notmahi/dobb-e/tree/main/stick-data-collection">
-                                <span class="icon">
-                                    <ion-icon name="code-outline"></ion-icon>
-                                </span>
-                                <span>Dataset creation code</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section> -->
 
     <!-- Dataset section -->
     <!-- <section class="hero is-fullheight-with-navbar" id="dataset">
@@ -626,152 +530,12 @@
                                 we go over the analysis of the failure modes presented in
                                 the figure above and discuss the most frequent cases.
                             </p>
-                            <!-- 
-                            <p class="block hero-subtext">
-                                Or if you are using <span class="">🤗</span> <a href="https://huggingface.co/timm"
-                                    target="_blank">Pytorch Image Models (TIMM)</a>, you can simply
-                                start using it in a couple of lines:
-                            </p> -->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Pretrained models -->
-    <!-- <section class="hero is-fullheight-with-navbar" id="models">
-        <div class="hero-body block">
-            <div class="container">
-                <div class="container block">
-                    <div class="title block">
-                        <h1 class="hero-text">
-                            Model
-                        </h1>
-                    </div>
-                    <div class="subtitle block">
-                        <h2 class="hero-subtitle">
-                            Home Pretrained Representations (HPR)
-                        </h2>
-                    </div>
-                    <div class="block">
-                        <div class="subtitle">
-                            <figure class="block">
-                                <img src="mfiles/images/robot_method.svg" alt="HPR" />
-                            </figure>
-                            <p class="block hero-subtext">
-                                Home Pretrained Representation (HPR) is a model pre-trained on the <a
-                                    href="#dataset">HoNY dataset</a> that we used to initialize a
-                                robot policy to perform a new task in a novel enviroment. HPR is a
-                                ResNet-34 model trained on the <a href="#dataset">HoNY dataset</a>
-                                using the <a href="https://github.com/facebookresearch/moco-v3">MoCo-v3</a>
-                                self-supervised learning objective.
-                            </p>
-                            <p class="block hero-subtext">
-                                During deployment,we used HPR to initialize a policy, the trunk of which was
-                                simply our pretrained ResNet-34 model followed by two linear layers on top.
-                            </p>
-                            <a class="block button is-info is-outlined is-fullwidth is-medium-tablet" target="_blank"
-                                href="https://huggingface.co/notmahi/dobb-e">
-                                <span class="icon">
-                                    🤗
-                                </span>
-                                <span>Get the model at Huggingface</span>
-                            </a>
-                            <p class="block hero-subtext">
-                                Or if you are using <span class="">🤗</span> <a href="https://huggingface.co/timm"
-                                    target="_blank">Pytorch Image Models (TIMM)</a>, you can simply
-                                start using it in a couple of lines:
-                            </p>
-                            <div class="demo-highlight" style="max-width: 90vw; overflow-x: auto;">
-                                <pre class="is-hidden-tablet"><span></span><span class="kn">import</span> <span class="nn">timm</span>
-
-<span class="n">model</span> <span class="o">=</span> <span class="n">timm</span><span class="o">.</span><span class="n">create_model</span><span class="p">(
-    </span><span class="s2">"hf-hub:notmahi/dobb-e"</span><span class="p">,
-    </span><span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">
-)</span></pre>
-
-                                <pre
-                                    class="is-hidden-mobile"><span></span><span class="kn">import</span> <span class="nn">timm</span>
-
-<span class="n">model</span> <span class="o">=</span> <span class="n">timm</span><span class="o">.</span><span class="n">create_model</span><span class="p">(</span><span class="s2">"hf-hub:notmahi/dobb-e"</span><span class="p">, </span><span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></pre>
-                            </div>
-                            <style id="css-style">
-                                td.linenos .normal {
-                                    color: inherit;
-                                    background-color: transparent;
-                                    padding-left: 5px;
-                                    padding-right: 5px;
-                                }
-
-                                span.linenos {
-                                    color: inherit;
-                                    background-color: transparent;
-                                    padding-left: 5px;
-                                    padding-right: 5px;
-                                }
-
-                                td.linenos .special {
-                                    color: #000000;
-                                    background-color: #ffffc0;
-                                    padding-left: 5px;
-                                    padding-right: 5px;
-                                }
-
-                                span.linenos.special {
-                                    color: #000000;
-                                    background-color: #ffffc0;
-                                    padding-left: 5px;
-                                    padding-right: 5px;
-                                }
-
-                                .demo-highlight .hll {
-                                    background-color: #ffffcc
-                                }
-
-                                .demo-highlight {
-                                    background: #ffffff;
-                                }
-
-                                .demo-highlight .k {
-                                    color: #A90D91
-                                }
-
-                                /* Keyword */
-                                .demo-highlight .l {
-                                    color: #1C01CE
-                                }
-
-                                /* Literal */
-                                .demo-highlight .n {
-                                    color: #000000
-                                }
-
-                                /* Name */
-                                .demo-highlight .o {
-                                    color: #000000
-                                }
-
-                                .demo-highlight .kc {
-                                    color: #A90D91
-                                }
-
-                                /* Keyword.Declaration */
-                                .demo-highlight .kn {
-                                    color: #A90D91
-                                }
-
-                                /* Literal.String.Doc */
-                                .demo-highlight .s2 {
-                                    color: #C41A16
-                                }
-                            </style>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
 
     <!-- Paper -->
     <section class="hero is-halfheight" id="paper">
@@ -809,7 +573,7 @@
                         </div>
                         <div class="column">
                             <a class="button is-outlined is-medium is-fullwidth" target="_blank"
-                                href="mfiles/paper/On_Bringing_Robots_Home.pdf">
+                                href="mfiles/paper/ok_robot.pdf">
                                 <span class="icon">
                                     <ion-icon name="document-text-outline"></ion-icon>
                                 </span>
