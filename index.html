@@ -140,7 +140,8 @@
     <nav class="navbar" role="navigation" aria-label="main navigation" id="nav">
         <div class="navbar-brand">
             <a class="navbar-item is-success nav-link is-size-3" href="#">
-                <span class="icon"><img src="mfiles/logo.svg"></img></span><span>OK-Robot</span>
+                <!-- <span class="icon"><img src="mfiles/logo.svg"></img></span> -->
+                <span>OK-Robot</span>
             </a>
 
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
@@ -176,11 +177,11 @@
                         <span>Paper</span>
                     </div>
                 </a>
-                <a class="navbar-item link is-info nav-link" href="#code">
+                <!-- <a class="navbar-item link is-info nav-link" href="#code">
                     <div class="icon-text">
                         <span>Code</span>
                     </div>
-                </a>
+                </a> -->
             </div>
             <div class="navbar-end">
                 <a class="navbar-item link is-info nav-link" href="https://docs.dobb-e.com/contact-us" target="_blank">
@@ -538,7 +539,7 @@
     </section>
 
     <!-- Paper -->
-    <section class="hero is-halfheight" id="paper">
+    <section class="hero is-fullheight-with-navbar" id="paper">
         <div class="hero-body block">
             <div class="container">
                 <div class="container block">
@@ -600,6 +601,17 @@
     primaryClass={cs.RO}
 }</pre>
                     </div>
+                    <div class="block">
+                        <div class="subtitle">
+                            <p class="block hero-subtext">
+                                We are currently in the process of integrating our code with the Hello Robot: Stretch
+                                stack, which we plan to open source soon. If you want to start playing with OK-Robot
+                                now, feel free to contact us via this page: <a href="https://docs.dobb-e.com/contact-us"
+                                    target="_blank">https://docs.dobb-e.com/contact-us</a>, and we can help you get set
+                                up sooner.
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -607,7 +619,7 @@
 
 
     <!-- Code -->
-    <section class="hero is-halfheight" id="code">
+    <!-- <section class="hero is-halfheight" id="code">
         <div class="hero-body block">
             <div class="container">
                 <div class="container block">
@@ -657,7 +669,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
 
     <!-- Footer -->
@@ -678,6 +690,13 @@
 
 <script>
     const videoData = { 0: ["Door closing", "1", "1"], 1: ["Door closing", "2", "1"], 2: ["Door closing", "2", "2"], 3: ["Door closing", "3", "1"], 4: ["Door closing", "5", "1"], 5: ["Door closing", "5", "2"], 6: ["Door closing", "5", "3"], 7: ["Door closing", "7", "1"], 8: ["Door closing", "8", "1"], 9: ["Door closing", "8", "2"], 10: ["Door closing", "9", "1"], 11: ["Door closing", "9", "2"], 12: ["Door closing", "10", "1"], 13: ["Door closing", "11", "1"], 14: ["Door closing", "14", "1"], 15: ["Door closing", "14", "2"], 16: ["Door closing", "14", "3"], 17: ["Door closing", "15", "1"], 18: ["Door closing", "15", "2"], 19: ["Door closing", "15", "3"], 20: ["Door closing", "15", "4"], 21: ["Door closing", "15", "5"], 22: ["Door closing", "15", "6"], 23: ["Door closing", "15", "7"], 24: ["Door closing", "15", "8"], 25: ["Door closing", "16", "1"], 26: ["Door closing", "16", "2"], 27: ["Door closing", "16", "3"], 28: ["Door closing", "17", "1"], 29: ["Door closing", "18", "1"], 30: ["Door closing", "19", "1"], 31: ["Door closing", "19", "2"], 32: ["Door closing", "20", "2"], 33: ["Door closing", "20", "3"], 34: ["Door closing", "20", "4"], 35: ["Door closing", "20", "5"], 36: ["Door closing", "21", "1"], 37: ["Door closing", "21", "2"], 38: ["Door closing", "21", "3"], 39: ["Door closing", "22", "1"], 40: ["Door opening", "1", "1"], 41: ["Door opening", "2", "1"], 42: ["Door opening", "2", "2"], 43: ["Door opening", "3", "1"], 44: ["Door opening", "4", "1"], 45: ["Door opening", "4", "2"], 46: ["Door opening", "6", "1"], 47: ["Door opening", "6", "2"], 48: ["Door opening", "6", "3"], 49: ["Door opening", "6", "4"], 50: ["Door opening", "8", "1"], 51: ["Door opening", "8", "2"], 52: ["Door opening", "8", "3"], 53: ["Door opening", "9", "1"], 54: ["Door opening", "9", "2"], 55: ["Door opening", "10", "1"], 56: ["Door opening", "11", "1"], 57: ["Door opening", "12", "1"], 58: ["Door opening", "12", "2"], 59: ["Door opening", "12", "3"], 60: ["Door opening", "13", "1"], 61: ["Door opening", "13", "2"], 62: ["Door opening", "13", "4"], 63: ["Door opening", "13", "5"], 64: ["Door opening", "14", "1"], 65: ["Door opening", "14", "2"], 66: ["Door opening", "14", "3"], 67: ["Door opening", "15", "1"], 68: ["Door opening", "15", "2"], 69: ["Door opening", "15", "3"], 70: ["Door opening", "15", "4"], 71: ["Door opening", "16", "1"], 72: ["Door opening", "16", "2"], 73: ["Door opening", "16", "3"], 74: ["Door opening", "17", "1"], 75: ["Door opening", "18", "1"], 76: ["Door opening", "20", "2"], 77: ["Door opening", "20", "3"], 78: ["Door opening", "20", "4"], 79: ["Door opening", "21", "1"], 80: ["Door opening", "21", "2"], 81: ["Door opening", "21", "3"], 82: ["Door opening", "21", "4"], 83: ["Door opening", "21", "5"], 84: ["Door opening", "22", "1"], 85: ["Door opening", "22", "2"], 86: ["Door opening", "22", "3"], 87: ["Door opening", "22", "4"], 88: ["Drawer closing", "2", "1"], 89: ["Drawer closing", "3", "1"], 90: ["Drawer closing", "3", "2"], 91: ["Drawer closing", "4", "1"], 92: ["Drawer closing", "5", "1"], 93: ["Drawer closing", "5", "2"], 94: ["Drawer closing", "7", "1"], 95: ["Drawer closing", "8", "1"], 96: ["Drawer closing", "8", "2"], 97: ["Drawer closing", "9", "1"], 98: ["Drawer closing", "9", "2"], 99: ["Drawer closing", "9", "3"], 100: ["Drawer closing", "10", "1"], 101: ["Drawer closing", "10", "2"], 102: ["Drawer closing", "11", "1"], 103: ["Drawer closing", "14", "1"], 104: ["Drawer closing", "14", "2"], 105: ["Drawer closing", "14", "3"], 106: ["Drawer closing", "15", "1"], 107: ["Drawer closing", "15", "2"], 108: ["Drawer closing", "16", "1"], 109: ["Drawer closing", "19", "1"], 110: ["Drawer closing", "19", "2"], 111: ["Drawer closing", "19", "3"], 112: ["Drawer closing", "20", "1"], 113: ["Drawer closing", "20", "2"], 114: ["Drawer closing", "21", "1"], 115: ["Drawer closing", "21", "2"], 116: ["Drawer closing", "21", "3"], 117: ["Drawer closing", "22", "1"], 118: ["Drawer opening", "2", "1"], 119: ["Drawer opening", "3", "1"], 120: ["Drawer opening", "3", "2"], 121: ["Drawer opening", "4", "1"], 122: ["Drawer opening", "4", "2"], 123: ["Drawer opening", "4", "3"], 124: ["Drawer opening", "5", "1"], 125: ["Drawer opening", "5", "2"], 126: ["Drawer opening", "7", "1"], 127: ["Drawer opening", "8", "1"], 128: ["Drawer opening", "9", "1"], 129: ["Drawer opening", "9", "2"], 130: ["Drawer opening", "10", "1"], 131: ["Drawer opening", "10", "3"], 132: ["Drawer opening", "11", "1"], 133: ["Drawer opening", "13", "1"], 134: ["Drawer opening", "14", "1"], 135: ["Drawer opening", "14", "2"], 136: ["Drawer opening", "15", "1"], 137: ["Drawer opening", "15", "2"], 138: ["Drawer opening", "16", "1"], 139: ["Drawer opening", "17", "1"], 140: ["Drawer opening", "18", "1"], 141: ["Drawer opening", "19", "1"], 142: ["Drawer opening", "20", "1"], 143: ["Drawer opening", "20", "2"], 144: ["Drawer opening", "21", "1"], 145: ["Drawer opening", "22", "1"], 146: ["Handle grasping", "3", "1"], 147: ["Handle grasping", "5", "1"], 148: ["Handle grasping", "6", "1"], 149: ["Handle grasping", "6", "2"], 150: ["Handle grasping", "6", "3"], 151: ["Handle grasping", "6", "4"], 152: ["Handle grasping", "6", "5"], 153: ["Handle grasping", "7", "1"], 154: ["Handle grasping", "15", "1"], 155: ["Handle grasping", "16", "1"], 156: ["Handle grasping", "16", "2"], 157: ["Handle grasping", "19", "1"], 158: ["Handle grasping", "20", "1"], 159: ["Handle grasping", "21", "1"], 160: ["Handle grasping", "22", "1"], 161: ["Handle grasping", "22", "2"], 162: ["Pick and place", "2", "1"], 163: ["Pick and place", "3", "1"], 164: ["Pick and place", "5", "1"], 165: ["Pick and place", "7", "1"], 166: ["Pick and place", "7", "2"], 167: ["Pick and place", "8", "1"], 168: ["Pick and place", "10", "1"], 169: ["Pick and place", "11", "1"], 170: ["Pick and place", "11", "2"], 171: ["Pick and place", "12", "1"], 172: ["Pick and place", "14", "1"], 173: ["Pick and place", "14", "2"], 174: ["Pick and place", "14", "3"], 175: ["Pick and place", "15", "1"], 176: ["Pick and place", "16", "1"], 177: ["Pick and place", "16", "2"], 178: ["Pick and place", "16", "3"], 179: ["Pick and place", "20", "1"], 180: ["Pick and place", "20", "2"], 181: ["Pick and place", "21", "1"], 182: ["Pick and place", "21", "2"], 183: ["Pick and place", "21", "3"], 184: ["Play data", "1", "1"], 185: ["Play data", "3", "1"], 186: ["Play data", "5", "1"], 187: ["Play data", "11", "1"], 188: ["Play data", "14", "1"], 189: ["Play data", "14", "2"], 190: ["Play data", "14", "3"], 191: ["Play data", "14", "4"], 192: ["Play data", "15", "1"], 193: ["Play data", "16", "1"], 194: ["Play data", "19", "1"], 195: ["Play data", "20", "1"], 196: ["Play data", "21", "1"], 197: ["Play data", "22", "4"], 198: ["Play data", "22", "5"], 199: ["Switch button", "2", "1"], 200: ["Switch button", "3", "1"], 201: ["Switch button", "5", "1"], 202: ["Switch button", "11", "1"], 203: ["Switch button", "11", "2"], 204: ["Switch button", "14", "1"], 205: ["Switch button", "14", "2"], 206: ["Switch button", "15", "1"], 207: ["Switch button", "15", "2"], 208: ["Switch button", "15", "3"], 209: ["Switch button", "15", "4"], 210: ["Switch button", "16", "1"], 211: ["Switch button", "21", "1"], 212: ["Switch button", "21", "2"], 213: ["Switch button", "21", "3"], 214: ["Switch button", "21", "4"], 215: ["Switch button", "22", "1"] };
+    const YTVideoID = {
+        "Home 2": "-A2vuqFizZQ",
+        "Home 6": "G7SBA5roNhI",
+        "Home 7": "tk0IJikYL2k",
+        "Home 8": "-zENt82QPEA",
+        "Home 10": "lQszLfsUWJk",
+    }
     const taskRollouts = {
         'Home 4': [{
             'proper_home_name': 'Home 4',
