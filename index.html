@@ -340,7 +340,7 @@
                 <div class="container block">
                     <!-- Dropdown for the video selection -->
                     <div class="columns">
-                        <div class="column is-8">
+                        <div class="column is-5">
                             <div class="select" style="display: block;">
                                 <select id="video-home-selection" style="width: 100%;">
                                     <!-- <option value="Home 1">Home 1</option> -->
@@ -356,29 +356,22 @@
                                 </select>
                             </div>
                         </div>
-                        <!-- <div class="column is-5">
+                        <div class="column is-5">
                             <div class="select" style="display: block;">
                                 <select id="video-task-selection" style="width: 100%;">
-                                    <option value="opening_horizontal_blinds.mp4">Opening horizontal blinds</option>
-                                    <option value="opening_kitchen_cabinet_drawer.mp4">Opening kitchen cabinet drawer
+                                    <option value="0-438">All
                                     </option>
-                                    <option value="pouring_marshmallows.mp4">Pouring marshmallows</option>
-                                    <option value="picking_up_and_placing_spice_bottle.mp4">Picking up and placing spice
-                                        bottle</option>
-                                    <option value="turning_knob.mp4">Turning knob</option>
-                                    <option value="closing_kitchen_cabinet_door.mp4">Closing kitchen cabinet door
+                                    <option value="0-79">Detergent Pack to Red Shopping Bag
                                     </option>
-                                    <option value="opening_air_fryer.mp4">Opening air fryer</option>
-                                    <option value="pick_and_place_plate.mp4">Pick and place plate</option>
-                                    <option value="closing_air_fryer.mp4">Closing air fryer</option>
-                                    <option value="closing_kitchen_cabinet_drawer.mp4">Closing kitchen cabinet drawer
+                                    <option value="85-179">Red Navaratna Oil to Table
                                     </option>
-                                    <option value="pickup_flower_from_vase.mp4">Pickup flower from vase</option>
-                                    <option value="opening_vertical_blinds.mp4">Opening vertical blinds</option>
+                                    <option value="183-275">Blue Moisturizer to Target Bag</option>
+                                    <option value="280-355">Purple Shampoo to White Rack</option>
+                                    <option value="357-438">Orange Package to Dust Bin</option>
                                 </select>
                             </div>
-                        </div> -->
-                        <div class="column is-4">
+                        </div>
+                        <div class="column is-2">
                             <button class="button is-info is-outlined" id="shuffle-button" style="width: 100%;">
                                 <span class="icon">
                                     <ion-icon name="shuffle-outline"></ion-icon>
@@ -390,7 +383,7 @@
                 </div>
                 <div class="block">
                     <div class="columns is-centered">
-                        <div class="column is-12-mobile is-12-tablet video-holder">
+                        <div class="column is-12-mobile is-10-tablet video-holder">
                             <figure class="">
                                 <style>
                                     .embed-container {
@@ -412,7 +405,7 @@
                                     }
                                 </style>
                                 <div class='embed-container'><iframe id="youtube-embed"
-                                        src='https://www.youtube.com/embed/-A2vuqFizZQ?fs=0&modestbranding=1&playsinline=1&rel=0'
+                                        src='https://www.youtube.com/embed/-A2vuqFizZQ?fs=0&modestbranding=1&playsinline=1&rel=0&color=white'
                                         frameborder='0' showinfo='0' allowfullscreen></iframe></div>
                             </figure>
                         </div>
@@ -421,78 +414,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Dataset section -->
-    <!-- <section class="hero is-fullheight-with-navbar" id="dataset">
-        <div class="hero-body block">
-            <div class="container">
-                <div class="container block">
-                    <div class="title block">
-                        <h1 class="hero-text">
-                            Dataset
-                        </h1>
-                    </div>
-                    <div class="subtitle block">
-                        <h2 class="hero-subtitle">
-                            Homes of New York (HoNY)
-                        </h2>
-                    </div>
-                    <div class="block columns is-multiline is-mobile is-centered" id="dataset-demo">
-                    </div>
-                    <div class="block">
-                        <div class="level is-size-4">
-                            <div class="level-item">
-                                22 homes
-                            </div>
-                            <div class="level-item">
-                                216 environments
-                            </div>
-                            <div class="level-item">
-                                5620 trajectories
-                            </div>
-                            <div class="level-item">
-                                13 hours
-                            </div>
-                            <div class="level-item">
-                                1.5 million frames
-                            </div>
-                        </div>
-                    </div>
-                    <div class="block">
-                        <div class="subtitle">
-                            <p class="block hero-subtext">
-                                Homes of New York (HoNY) is a dataset containing 13 hours of interactions at 22
-                                different homes of New York City collected with the <a href="#hardware">Stick</a>. The
-                                dataset contains RGB and depth videos at 30 fps, as well as full action annotations for
-                                6D pose of the gripper as well as the gripper's opening angle normalized between (0, 1).
-                            </p>
-                            <div class="block field columns">
-                                <div class="column">
-                                    <a class="block button is-info is-outlined is-medium is-fullwidth" target="_blank"
-                                        href="https://dl.dobb-e.com/datasets/homes_of_new_york.zip">
-                                        <span class="icon">
-                                            <ion-icon name="caret-forward-circle-outline"></ion-icon>
-                                        </span>
-                                        <span>RGB + actions dataset (814 MB)</span>
-                                    </a>
-
-                                </div>
-
-                                <div class=" column">
-                                    <a class="block button is-info is-outlined is-medium is-fullwidth" target="_blank"
-                                        href="https://drive.google.com/drive/folders/1o8c6b6hSKfId8EzemVGf8c7DQoZ2IHAO?usp=sharing">
-                                        <span class="icon">
-                                            <ion-icon name="caret-forward-circle-outline"></ion-icon>
-                                        </span>
-                                        <span>RGB-D + actions dataset (77 GB)</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </section> -->
 
     <section class="hero is-fullheight-with-navbar" id="analysis">
         <div class="hero-body block">
@@ -617,61 +538,6 @@
         </div>
     </section>
 
-
-    <!-- Code -->
-    <!-- <section class="hero is-halfheight" id="code">
-        <div class="hero-body block">
-            <div class="container">
-                <div class="container block">
-                    <div class="title block">
-                        <h1 class="hero-text">
-                            Code
-                        </h1>
-                    </div>
-                    <div class="subtitle block">
-                        <h2 class="hero-subtitle">
-                            All components of OK-Robot are open. Check back in for the release of our platform code
-                            soon!
-                        </h2>
-                    </div>
-                    <div class="container block">
-                        <div class="columns">
-                            <div class="column">
-                                <a class="button is-outlined is-medium is-fullwidth" target="_blank"
-                                    href="https://github.com/facebookresearch/home-robot">
-                                    <span class="icon">
-                                        <ion-icon name="logo-github"></ion-icon>
-                                    </span>
-                                    <span>VoxelMap (@ Home Robot)</span>
-                                </a>
-                            </div>
-                            <div class="column">
-                                <a class="button is-outlined is-medium is-fullwidth" target="_blank"
-                                    href="https://github.com/graspnet/anygrasp_sdk">
-                                    <span class="icon">
-                                        <ion-icon name="logo-github"></ion-icon>
-                                    </span>
-                                    <span>AnyGrasp</span>
-                                </a>
-                            </div>
-                            <div class="column">
-                                <a class="button is-outlined is-medium is-fullwidth" target="_blank"
-                                    href="https://github.com/luca-medeiros/lang-segment-anything/">
-                                    <span class="icon">
-                                        <ion-icon name="logo-github"></ion-icon>
-                                    </span>
-                                    <span>Lang-SAM</span>
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-
     <!-- Footer -->
     <footer class="footer">
         <div class="content has-text-centered">
@@ -689,9 +555,193 @@
 </body>
 
 <script>
-    const videoData = { 0: ["Door closing", "1", "1"], 1: ["Door closing", "2", "1"], 2: ["Door closing", "2", "2"], 3: ["Door closing", "3", "1"], 4: ["Door closing", "5", "1"], 5: ["Door closing", "5", "2"], 6: ["Door closing", "5", "3"], 7: ["Door closing", "7", "1"], 8: ["Door closing", "8", "1"], 9: ["Door closing", "8", "2"], 10: ["Door closing", "9", "1"], 11: ["Door closing", "9", "2"], 12: ["Door closing", "10", "1"], 13: ["Door closing", "11", "1"], 14: ["Door closing", "14", "1"], 15: ["Door closing", "14", "2"], 16: ["Door closing", "14", "3"], 17: ["Door closing", "15", "1"], 18: ["Door closing", "15", "2"], 19: ["Door closing", "15", "3"], 20: ["Door closing", "15", "4"], 21: ["Door closing", "15", "5"], 22: ["Door closing", "15", "6"], 23: ["Door closing", "15", "7"], 24: ["Door closing", "15", "8"], 25: ["Door closing", "16", "1"], 26: ["Door closing", "16", "2"], 27: ["Door closing", "16", "3"], 28: ["Door closing", "17", "1"], 29: ["Door closing", "18", "1"], 30: ["Door closing", "19", "1"], 31: ["Door closing", "19", "2"], 32: ["Door closing", "20", "2"], 33: ["Door closing", "20", "3"], 34: ["Door closing", "20", "4"], 35: ["Door closing", "20", "5"], 36: ["Door closing", "21", "1"], 37: ["Door closing", "21", "2"], 38: ["Door closing", "21", "3"], 39: ["Door closing", "22", "1"], 40: ["Door opening", "1", "1"], 41: ["Door opening", "2", "1"], 42: ["Door opening", "2", "2"], 43: ["Door opening", "3", "1"], 44: ["Door opening", "4", "1"], 45: ["Door opening", "4", "2"], 46: ["Door opening", "6", "1"], 47: ["Door opening", "6", "2"], 48: ["Door opening", "6", "3"], 49: ["Door opening", "6", "4"], 50: ["Door opening", "8", "1"], 51: ["Door opening", "8", "2"], 52: ["Door opening", "8", "3"], 53: ["Door opening", "9", "1"], 54: ["Door opening", "9", "2"], 55: ["Door opening", "10", "1"], 56: ["Door opening", "11", "1"], 57: ["Door opening", "12", "1"], 58: ["Door opening", "12", "2"], 59: ["Door opening", "12", "3"], 60: ["Door opening", "13", "1"], 61: ["Door opening", "13", "2"], 62: ["Door opening", "13", "4"], 63: ["Door opening", "13", "5"], 64: ["Door opening", "14", "1"], 65: ["Door opening", "14", "2"], 66: ["Door opening", "14", "3"], 67: ["Door opening", "15", "1"], 68: ["Door opening", "15", "2"], 69: ["Door opening", "15", "3"], 70: ["Door opening", "15", "4"], 71: ["Door opening", "16", "1"], 72: ["Door opening", "16", "2"], 73: ["Door opening", "16", "3"], 74: ["Door opening", "17", "1"], 75: ["Door opening", "18", "1"], 76: ["Door opening", "20", "2"], 77: ["Door opening", "20", "3"], 78: ["Door opening", "20", "4"], 79: ["Door opening", "21", "1"], 80: ["Door opening", "21", "2"], 81: ["Door opening", "21", "3"], 82: ["Door opening", "21", "4"], 83: ["Door opening", "21", "5"], 84: ["Door opening", "22", "1"], 85: ["Door opening", "22", "2"], 86: ["Door opening", "22", "3"], 87: ["Door opening", "22", "4"], 88: ["Drawer closing", "2", "1"], 89: ["Drawer closing", "3", "1"], 90: ["Drawer closing", "3", "2"], 91: ["Drawer closing", "4", "1"], 92: ["Drawer closing", "5", "1"], 93: ["Drawer closing", "5", "2"], 94: ["Drawer closing", "7", "1"], 95: ["Drawer closing", "8", "1"], 96: ["Drawer closing", "8", "2"], 97: ["Drawer closing", "9", "1"], 98: ["Drawer closing", "9", "2"], 99: ["Drawer closing", "9", "3"], 100: ["Drawer closing", "10", "1"], 101: ["Drawer closing", "10", "2"], 102: ["Drawer closing", "11", "1"], 103: ["Drawer closing", "14", "1"], 104: ["Drawer closing", "14", "2"], 105: ["Drawer closing", "14", "3"], 106: ["Drawer closing", "15", "1"], 107: ["Drawer closing", "15", "2"], 108: ["Drawer closing", "16", "1"], 109: ["Drawer closing", "19", "1"], 110: ["Drawer closing", "19", "2"], 111: ["Drawer closing", "19", "3"], 112: ["Drawer closing", "20", "1"], 113: ["Drawer closing", "20", "2"], 114: ["Drawer closing", "21", "1"], 115: ["Drawer closing", "21", "2"], 116: ["Drawer closing", "21", "3"], 117: ["Drawer closing", "22", "1"], 118: ["Drawer opening", "2", "1"], 119: ["Drawer opening", "3", "1"], 120: ["Drawer opening", "3", "2"], 121: ["Drawer opening", "4", "1"], 122: ["Drawer opening", "4", "2"], 123: ["Drawer opening", "4", "3"], 124: ["Drawer opening", "5", "1"], 125: ["Drawer opening", "5", "2"], 126: ["Drawer opening", "7", "1"], 127: ["Drawer opening", "8", "1"], 128: ["Drawer opening", "9", "1"], 129: ["Drawer opening", "9", "2"], 130: ["Drawer opening", "10", "1"], 131: ["Drawer opening", "10", "3"], 132: ["Drawer opening", "11", "1"], 133: ["Drawer opening", "13", "1"], 134: ["Drawer opening", "14", "1"], 135: ["Drawer opening", "14", "2"], 136: ["Drawer opening", "15", "1"], 137: ["Drawer opening", "15", "2"], 138: ["Drawer opening", "16", "1"], 139: ["Drawer opening", "17", "1"], 140: ["Drawer opening", "18", "1"], 141: ["Drawer opening", "19", "1"], 142: ["Drawer opening", "20", "1"], 143: ["Drawer opening", "20", "2"], 144: ["Drawer opening", "21", "1"], 145: ["Drawer opening", "22", "1"], 146: ["Handle grasping", "3", "1"], 147: ["Handle grasping", "5", "1"], 148: ["Handle grasping", "6", "1"], 149: ["Handle grasping", "6", "2"], 150: ["Handle grasping", "6", "3"], 151: ["Handle grasping", "6", "4"], 152: ["Handle grasping", "6", "5"], 153: ["Handle grasping", "7", "1"], 154: ["Handle grasping", "15", "1"], 155: ["Handle grasping", "16", "1"], 156: ["Handle grasping", "16", "2"], 157: ["Handle grasping", "19", "1"], 158: ["Handle grasping", "20", "1"], 159: ["Handle grasping", "21", "1"], 160: ["Handle grasping", "22", "1"], 161: ["Handle grasping", "22", "2"], 162: ["Pick and place", "2", "1"], 163: ["Pick and place", "3", "1"], 164: ["Pick and place", "5", "1"], 165: ["Pick and place", "7", "1"], 166: ["Pick and place", "7", "2"], 167: ["Pick and place", "8", "1"], 168: ["Pick and place", "10", "1"], 169: ["Pick and place", "11", "1"], 170: ["Pick and place", "11", "2"], 171: ["Pick and place", "12", "1"], 172: ["Pick and place", "14", "1"], 173: ["Pick and place", "14", "2"], 174: ["Pick and place", "14", "3"], 175: ["Pick and place", "15", "1"], 176: ["Pick and place", "16", "1"], 177: ["Pick and place", "16", "2"], 178: ["Pick and place", "16", "3"], 179: ["Pick and place", "20", "1"], 180: ["Pick and place", "20", "2"], 181: ["Pick and place", "21", "1"], 182: ["Pick and place", "21", "2"], 183: ["Pick and place", "21", "3"], 184: ["Play data", "1", "1"], 185: ["Play data", "3", "1"], 186: ["Play data", "5", "1"], 187: ["Play data", "11", "1"], 188: ["Play data", "14", "1"], 189: ["Play data", "14", "2"], 190: ["Play data", "14", "3"], 191: ["Play data", "14", "4"], 192: ["Play data", "15", "1"], 193: ["Play data", "16", "1"], 194: ["Play data", "19", "1"], 195: ["Play data", "20", "1"], 196: ["Play data", "21", "1"], 197: ["Play data", "22", "4"], 198: ["Play data", "22", "5"], 199: ["Switch button", "2", "1"], 200: ["Switch button", "3", "1"], 201: ["Switch button", "5", "1"], 202: ["Switch button", "11", "1"], 203: ["Switch button", "11", "2"], 204: ["Switch button", "14", "1"], 205: ["Switch button", "14", "2"], 206: ["Switch button", "15", "1"], 207: ["Switch button", "15", "2"], 208: ["Switch button", "15", "3"], 209: ["Switch button", "15", "4"], 210: ["Switch button", "16", "1"], 211: ["Switch button", "21", "1"], 212: ["Switch button", "21", "2"], 213: ["Switch button", "21", "3"], 214: ["Switch button", "21", "4"], 215: ["Switch button", "22", "1"] };
+    const videoData = [
+        {
+            "Environment": "Home 6",
+            "Picking Object": "Purple Medicine",
+            "Placing Object": "Chair",
+            "ST": 0,
+            "ET": 70
+        },
+        {
+            "Environment": "Home 6",
+            "Picking Object": "Eye glass Case",
+            "Placing Object": "Chair",
+            "ST": 73,
+            "ET": 149
+        },
+        {
+            "Environment": "Home 6",
+            "Picking Object": "Grey Rag",
+            "Placing Object": "Sink",
+            "ST": 152,
+            "ET": 226
+        },
+        {
+            "Environment": "Home 6",
+            "Picking Object": "Golden Can",
+            "Placing Object": "Table",
+            "ST": 229,
+            "ET": 306
+        },
+        {
+            "Environment": "Home 6",
+            "Picking Object": "Mouth Spray",
+            "Placing Object": "Countertop",
+            "ST": 310,
+            "ET": 390
+        },
+        {
+            "Environment": "Home 7",
+            "Picking Object": "Toy Bear",
+            "Placing Object": "Bed",
+            "ST": 0,
+            "ET": 79
+        },
+        {
+            "Environment": "Home 7",
+            "Picking Object": "Apple Juice",
+            "Placing Object": "Box",
+            "ST": 81,
+            "ET": 155
+        },
+        {
+            "Environment": "Home 7",
+            "Picking Object": "Paper Towel",
+            "Placing Object": "Blue Box",
+            "ST": 158,
+            "ET": 225
+        },
+        {
+            "Environment": "Home 7",
+            "Picking Object": "Herbal Tea",
+            "Placing Object": "Box",
+            "ST": 228,
+            "ET": 295
+        },
+        {
+            "Environment": "Home 7",
+            "Picking Object": "Earphone Box",
+            "Placing Object": "Blue Box",
+            "ST": 296,
+            "ET": 374
+        },
+        {
+            "Environment": "Home 8",
+            "Picking Object": "Taki Chips",
+            "Placing Object": "Countertop",
+            "ST": 2,
+            "ET": 74
+        },
+        {
+            "Environment": "Home 8",
+            "Picking Object": "Blue Gloves",
+            "Placing Object": "Sink",
+            "ST": 77,
+            "ET": 150
+        },
+        {
+            "Environment": "Home 8",
+            "Picking Object": "Bandage Box",
+            "Placing Object": "Dust Bin",
+            "ST": 152,
+            "ET": 214
+        },
+        {
+            "Environment": "Home 8",
+            "Picking Object": "White Aerosol",
+            "Placing Object": "Trash Can",
+            "ST": 224,
+            "ET": 288
+        },
+        {
+            "Environment": "Home 8",
+            "Picking Object": "Peanut Butter",
+            "Placing Object": "Countertop",
+            "ST": 290,
+            "ET": 364
+        },
+        {
+            "Environment": "Home 10",
+            "Picking Object": "Brown Box",
+            "Placing Object": "Chair",
+            "ST": 1,
+            "ET": 90
+        },
+        {
+            "Environment": "Home 10",
+            "Picking Object": "Cough Syrup",
+            "Placing Object": "Shelf",
+            "ST": 94,
+            "ET": 178
+        },
+        {
+            "Environment": "Home 10",
+            "Picking Object": "Axe Body Spray",
+            "Placing Object": "Shelf",
+            "ST": 182,
+            "ET": 273
+        },
+        {
+            "Environment": "Home 10",
+            "Picking Object": "Red Deodorant",
+            "Placing Object": "Bed",
+            "ST": 276,
+            "ET": 353
+        },
+        {
+            "Environment": "Home 10",
+            "Picking Object": "Green Tea Packet",
+            "Placing Object": "Basket",
+            "ST": 356,
+            "ET": 431
+        },
+        {
+            "Environment": "Home 2",
+            "Picking Object": "Detergent Pack",
+            "Placing Object": "Red Shopping Bag",
+            "ST": 0,
+            "ET": 79
+        },
+        {
+            "Environment": "Home 2",
+            "Picking Object": "Red Navaratna Oil",
+            "Placing Object": "Table",
+            "ST": 85,
+            "ET": 179
+        },
+        {
+            "Environment": "Home 2",
+            "Picking Object": "Blue Moisturizer",
+            "Placing Object": "Target Bag",
+            "ST": 183,
+            "ET": 275
+        },
+        {
+            "Environment": "Home 2",
+            "Picking Object": "Purple Shampoo",
+            "Placing Object": "White Rack",
+            "ST": 280,
+            "ET": 355
+        },
+        {
+            "Environment": "Home 2",
+            "Picking Object": "Orange Package",
+            "Placing Object": "Dust Bin",
+            "ST": 357,
+            "ET": 438
+        }
+    ];
+    // Create a mapping from env name to array of slices.
+    const taskRollouts = {};
+    videoData.forEach((video) => {
+        if (!(video.Environment in taskRollouts)) {
+            taskRollouts[video.Environment] = [];
+        }
+        taskRollouts[video.Environment].push(video);
+    });
     const YTVideoPrefix = "https://www.youtube.com/embed/";
-    const YTVideoSuffix = "?fs=0&modestbranding=1&playsinline=1&rel=0";
+    const YTVideoSuffix = "?autoplay=1&fs=0&modestbranding=1&playsinline=1&rel=0&color=white";
     const YTVideoID = {
         "Home 2": "-A2vuqFizZQ",
         "Home 6": "G7SBA5roNhI",
@@ -738,61 +788,50 @@
         const taskSelection = document.getElementById('video-task-selection');
         const homeSelection = document.getElementById('video-home-selection');
         const videoSelection = document.getElementById('youtube-embed');
-        // videoSelection.muted = true;
-        // videoSelection.addEventListener('loadstart', function (event) {
-        //     this.classList.add('is-loading');
-        // });
-        // videoSelection.addEventListener('canplay', function (event) {
-        //     this.classList.remove('is-loading');
-        //     this.muted = true;
-        //     this.play();
-        // });
-        // taskSelection.addEventListener("change", function (event) {
-        //     const task = event.target.value;
-        //     const home = homeSelection.value;
-        //     const properHomeName = homeSelection.value;
-        //     // const videos = taskRollouts[properHomeName];
-        //     // const filteredVideos = videos.filter((video) => video.filename === task);
-        //     const videoSelection = document.getElementById('selected_video');
-        //     videoSelection.src = `${YTVideoPrefix}${YTVideoID[properHomeName]}${YTVideoSuffix}`;
-        //     // videoSelection.muted = true;
-        //     // videoSelection.play();
-        // });
+        taskSelection.addEventListener("change", function (event) {
+            const task = event.target.value;
+            const home = homeSelection.value;
+            const properHomeName = homeSelection.value;
+            // Calculate start, end from the value.
+            const [start, end] = task.split('-');
+            const videoSelection = document.getElementById('youtube-embed');
+            videoSelection.src = `${YTVideoPrefix}${YTVideoID[properHomeName]}${YTVideoSuffix}&start=${start}&end=${end}`;
+        });
 
-        // function updateTaskList(home) {
-        //     const videos = taskRollouts[home];
-        //     // Now change the options for task selection
-        //     const taskSelection = document.getElementById('video-task-selection');
-        //     taskSelection.innerHTML = '';
-        //     videos.forEach((video) => {
-        //         const option = document.createElement('option');
-        //         option.value = video.filename;
-        //         option.innerText = video.proper_task_name;
-        //         taskSelection.appendChild(option);
-        //     });
-        //     return videos[0];
+        function updateTaskList(home) {
+            const videos = taskRollouts[home];
+            // Now change the options for task selection
+            const taskSelection = document.getElementById('video-task-selection');
+            taskSelection.innerHTML = '';
 
-        // }
+            const option = document.createElement('option');
+            option.value = `0-${videos[4].ET}`;
+            option.innerText = `All`;
+            taskSelection.appendChild(option);
+            videos.forEach((video) => {
+                const option = document.createElement('option');
+                option.value = `${video.ST}-${video.ET}`;
+                option.innerText = `${video["Picking Object"]} to ${video["Placing Object"]}`;
+                taskSelection.appendChild(option);
+            });
+            return videos[0];
+        }
         homeSelection.addEventListener("change", function (event) {
             const properHomeName = this.value;
-            // video = updateTaskList(properHomeName);
+            video = updateTaskList(properHomeName);
             const videoSelection = document.getElementById('youtube-embed');
             videoSelection.src = `${YTVideoPrefix}${YTVideoID[properHomeName]}${YTVideoSuffix}`;
-            // videoSelection.muted = true;
-            // videoSelection.play();
         });
 
         // Add shuffle option
         function shuffleVideo() {
             const randomHome = Object.keys(YTVideoID)[Math.floor(Math.random() * Object.keys(YTVideoID).length)];
-            //     const randomTask = taskRollouts[randomHome][Math.floor(Math.random() * taskRollouts[randomHome].length)];
+            const randomTask = taskRollouts[randomHome][Math.floor(Math.random() * taskRollouts[randomHome].length)];
             const videoSelection = document.getElementById('youtube-embed');
-            //     homeSelection.value = randomTask.proper_home_name;
-            //     updateTaskList(randomTask.proper_home_name);
-            //     taskSelection.value = randomTask.filename;
-            videoSelection.src = `${YTVideoPrefix}${YTVideoID[randomHome]}${YTVideoSuffix}`;
-            //     videoSelection.muted = true;
-            //     videoSelection.play();
+            homeSelection.value = randomTask.Environment;
+            updateTaskList(randomTask.Environment);
+            taskSelection.value = `${randomTask.ST}-${randomTask.ET}`;
+            videoSelection.src = `${YTVideoPrefix}${YTVideoID[randomHome]}${YTVideoSuffix}&start=${randomTask.ST}&end=${randomTask.ET}`;
         }
         shuffleVideo();
         const shuffleButton = document.getElementById('shuffle-button');
